@@ -5,7 +5,7 @@ import { Check } from 'lucide-react';
 const packages = [
   {
     name: 'Consulta Express',
-    price: '$250.000',
+    price: '$70',
     description: 'Para dudas puntuales y orientación rápida.',
     features: [
       'Videollamada de 30 minutos',
@@ -18,7 +18,7 @@ const packages = [
   },
   {
     name: 'Consulta Estratégica',
-    price: '$500.000',
+    price: '$125',
     description: 'Análisis profundo y plan de acción detallado.',
     features: [
       'Videollamada de 60 minutos',
@@ -32,7 +32,7 @@ const packages = [
   },
   {
     name: 'Revisión de Contrato',
-    price: '$400.000',
+    price: '$100',
     description: 'Garantiza la legalidad y equidad de tu contrato.',
     features: [
       'Revisión exhaustiva de contrato de arriendo',
@@ -74,7 +74,7 @@ export default function ConsultationPackages() {
                 <CardDescription className="text-foreground/70">{pkg.description}</CardDescription>
                 <div className="mt-4">
                   <span className="text-5xl font-extrabold">{pkg.price}</span>
-                  <span className="text-foreground/70"> COP</span>
+                  <span className="text-foreground/70"> USD</span>
                 </div>
               </CardHeader>
               <CardContent className="p-8 pt-0 flex-grow">
