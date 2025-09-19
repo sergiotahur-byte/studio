@@ -11,6 +11,8 @@ const packages = [
       'Videollamada de 30 minutos',
       'Resolución de una duda concreta',
       'Análisis verbal preliminar',
+      'Revisión del contrato de arrendamiento y sus anexos',
+      'Acción prejudicial',
     ],
     isPopular: false,
     cta: 'Comprar Consulta',
