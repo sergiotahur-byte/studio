@@ -51,7 +51,7 @@ export default function ConsultationPackages() {
     <section id="consultas" className="section-padding bg-white-a05">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Paquetes de Consulta</h2>
+          <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Paquetes de Servicios</h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
             Elija la consulta que mejor se adapte a sus necesidades para obtener asesoramiento legal experto.
           </p>
