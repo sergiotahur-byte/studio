@@ -24,9 +24,11 @@ const packages = [
     description: 'Análisis profundo y plan de acción detallado.',
     features: [
       'Videollamada de 60 minutos',
-      'Análisis de un documento (hasta 10 pág.)',
+      'Análisis de los documentos asociados al arrendamiento',
       'Propuesta de estrategia legal',
       'Resolución de hasta 3 dudas',
+      'Acciones prejudiciales y extrajudiciales',
+      'Acompañamiento personalizado',
     ],
     isPopular: true,
     cta: 'Comprar Consulta',
