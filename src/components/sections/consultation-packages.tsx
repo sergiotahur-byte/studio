@@ -43,6 +43,7 @@ const packages = [
       'Informe escrito con cláusulas a modificar',
       'Propuesta de redacción alternativa',
       'Llamada de 15 min. para resolver dudas',
+      'Suministro de contratos de arrendamiento y documentos complementarios dependiendo del perfil del arrendador',
     ],
     isPopular: false,
     cta: 'Comprar Consulta',
