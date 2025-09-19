@@ -8,10 +8,10 @@ export default function Hero() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-foreground tracking-tighter mb-6 font-headline leading-tight">
-            Defendemos tu Propiedad. Recuperamos tu Tranquilidad.
+            Defendemos su Propiedad. Recuperamos su Tranquilidad.
           </h1>
           <p className="max-w-2xl mx-auto text-lg lg:text-xl text-foreground/80 mb-10">
-            Expertos en recuperación de propiedades y defensa de propietarios. Analiza tu contrato de alquiler con nuestra IA y obtén una consulta legal especializada.
+            Expertos en recuperación de predios y defensa de propietarios en Colombia. Analice su contrato de arriendo con nuestra IA y obtenga una consulta legal especializada.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-8">

@@ -4,8 +4,8 @@ import { Toaster } from '@/components/ui/toaster';
 import ParticleBackground from '@/components/animations/particle-background';
 
 export const metadata: Metadata = {
-  title: 'Recuperaciones Jurídicas',
-  description: 'Expertos en recuperación de propiedades y defensa de propietarios.',
+  title: 'Recuperaciones Jurídicas Colombia',
+  description: 'Expertos en recuperación de predios y defensa de propietarios en Colombia.',
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="dark">
+    <html lang="es-CO" className="dark">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

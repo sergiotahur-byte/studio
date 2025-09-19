@@ -4,18 +4,18 @@ import { Gavel, Home, ShieldCheck } from 'lucide-react';
 const services = [
   {
     icon: <Home className="h-10 w-10 text-accent" />,
-    title: 'Recuperación de Propiedades',
-    description: 'Gestionamos el proceso legal para recuperar tu inmueble de inquilinos morosos o precaristas de forma rápida y eficiente.',
+    title: 'Recuperación de Predios',
+    description: 'Gestionamos el proceso de restitución de inmueble arrendado para recuperar su predio de arrendatarios morosos o incumplidos de forma rápida y eficiente.',
   },
   {
     icon: <ShieldCheck className="h-10 w-10 text-accent" />,
-    title: 'Defensa del Propietario',
-    description: 'Te defendemos ante cualquier disputa legal, protegiendo tus derechos como propietario y asegurando el cumplimiento del contrato.',
+    title: 'Defensa del Arrendador',
+    description: 'Lo defendemos ante cualquier disputa legal, protegiendo sus derechos como propietario y asegurando el cumplimiento del contrato.',
   },
   {
     icon: <Gavel className="h-10 w-10 text-accent" />,
     title: 'Asesoría en Contratos',
-    description: 'Revisamos y redactamos contratos de arrendamiento sólidos para prevenir futuros conflictos y garantizar tu seguridad jurídica.',
+    description: 'Revisamos y redactamos contratos de arrendamiento sólidos para prevenir futuros conflictos y garantizar su seguridad jurídica.',
   },
 ];
 
@@ -26,7 +26,7 @@ export default function Services() {
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Nuestros Servicios Jurídicos</h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
-            Soluciones legales a la medida de los propietarios para proteger su patrimonio.
+            Soluciones legales a la medida de los propietarios para proteger su patrimonio en Colombia.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

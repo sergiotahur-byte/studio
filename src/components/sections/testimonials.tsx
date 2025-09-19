@@ -12,21 +12,21 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 const testimonials = [
   {
     id: 'testimonial-1',
-    quote: 'Recuperaron mi piso en tiempo récord. Su profesionalismo y comunicación constante me dieron una tranquilidad inmensa durante todo el proceso. ¡Totalmente recomendados!',
+    quote: 'Recuperaron mi apartamento en tiempo récord. Su profesionalismo y comunicación constante me dieron una tranquilidad inmensa durante todo el proceso. ¡Totalmente recomendados!',
     name: 'Carlos Fernández',
-    title: 'Propietario en Madrid',
+    title: 'Propietario en Bogotá',
   },
   {
     id: 'testimonial-2',
     quote: 'Tenía un contrato con cláusulas que no entendía y me parecían abusivas. El análisis con su herramienta de IA y la posterior consulta me aclararon todo. Me siento mucho más seguro.',
     name: 'Laura Jiménez',
-    title: 'Propietaria en Barcelona',
+    title: 'Propietaria en Medellín',
   },
   {
     id: 'testimonial-3',
-    quote: 'La defensa legal que me proporcionaron fue excepcional. Se enfrentaron a una situación complicada y lograron proteger mis derechos como propietario. No podría estar más agradecido.',
+    quote: 'La defensa legal que me proporcionaron fue excepcional. Se enfrentaron a una situación complicada y lograron proteger mis derechos como arrendador. No podría estar más agradecido.',
     name: 'Miguel Ángel Ruiz',
-    title: 'Inversor Inmobiliario',
+    title: 'Inversionista Inmobiliario en Cali',
   },
 ];
 
@@ -39,7 +39,7 @@ export default function Testimonials() {
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Casos de Éxito</h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
-            Descubre cómo hemos ayudado a otros propietarios a proteger su inversión y tranquilidad.
+            Descubra cómo hemos ayudado a otros propietarios a proteger su inversión y tranquilidad.
           </p>
         </div>
 

@@ -5,7 +5,7 @@ import { Check } from 'lucide-react';
 const packages = [
   {
     name: 'Consulta Express',
-    price: '€75',
+    price: '$250.000',
     description: 'Para dudas puntuales y orientación rápida.',
     features: [
       'Videollamada de 30 minutos',
@@ -18,7 +18,7 @@ const packages = [
   },
   {
     name: 'Consulta Estratégica',
-    price: '€150',
+    price: '$500.000',
     description: 'Análisis profundo y plan de acción detallado.',
     features: [
       'Videollamada de 60 minutos',
@@ -32,10 +32,10 @@ const packages = [
   },
   {
     name: 'Revisión de Contrato',
-    price: '€120',
+    price: '$400.000',
     description: 'Garantiza la legalidad y equidad de tu contrato.',
     features: [
-      'Revisión exhaustiva de contrato',
+      'Revisión exhaustiva de contrato de arriendo',
       'Informe escrito con cláusulas a modificar',
       'Propuesta de redacción alternativa',
       'Llamada de 15 min. para resolver dudas',
@@ -53,7 +53,7 @@ export default function ConsultationPackages() {
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Paquetes de Consulta</h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
-            Elige la consulta que mejor se adapte a tus necesidades para obtener asesoramiento legal experto.
+            Elija la consulta que mejor se adapte a sus necesidades para obtener asesoramiento legal experto.
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -74,7 +74,7 @@ export default function ConsultationPackages() {
                 <CardDescription className="text-foreground/70">{pkg.description}</CardDescription>
                 <div className="mt-4">
                   <span className="text-5xl font-extrabold">{pkg.price}</span>
-                  <span className="text-foreground/70">/consulta</span>
+                  <span className="text-foreground/70"> COP</span>
                 </div>
               </CardHeader>
               <CardContent className="p-8 pt-0 flex-grow">

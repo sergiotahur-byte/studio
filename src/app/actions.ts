@@ -5,7 +5,7 @@ import { analyzeLeaseAgreement as analyzeLeaseAgreementFlow, AnalyzeLeaseAgreeme
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres." }),
-  email: z.string().email({ message: "Por favor, introduce un correo electrónico válido." }),
+  email: z.string().email({ message: "Por favor, ingrese un correo electrónico válido." }),
   message: z.string().min(10, { message: "El mensaje debe tener al menos 10 caracteres." }),
 });
 
@@ -27,10 +27,10 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     // Here you would typically send an email or save to a database
     console.log('Contact form submitted:');
     console.log(validatedFields.data);
-    return { message: '¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.', errors: {} };
+    return { message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.', errors: {} };
   } catch (e) {
     console.error(e);
-    return { message: 'Ocurrió un error al enviar el formulario. Por favor, inténtalo de nuevo.', errors: {} };
+    return { message: 'Ocurrió un error al enviar el formulario. Por favor, inténtelo de nuevo.', errors: {} };
   }
 }
 
@@ -44,6 +44,6 @@ export async function analyzeLease(leaseAgreementDataUri: string): Promise<{ suc
     return { success: true, data: result };
   } catch (error) {
     console.error('Error analyzing lease agreement:', error);
-    return { success: false, error: 'No se pudo analizar el documento. Asegúrate de que sea un archivo de imagen o PDF válido.' };
+    return { success: false, error: 'No se pudo analizar el documento. Asegúrese de que sea un archivo de imagen o PDF válido.' };
   }
 }

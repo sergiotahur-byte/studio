@@ -25,7 +25,7 @@ export default function DocumentAnalyzer() {
         toast({
           variant: 'destructive',
           title: 'Archivo demasiado grande',
-          description: 'Por favor, sube un archivo de menos de 4MB.',
+          description: 'Por favor, suba un archivo de menos de 4MB.',
         });
         return;
       }
@@ -40,7 +40,7 @@ export default function DocumentAnalyzer() {
       toast({
         variant: 'destructive',
         title: 'No hay archivo',
-        description: 'Por favor, selecciona un documento para analizar.',
+        description: 'Por favor, seleccione un documento para analizar.',
       });
       return;
     }
@@ -82,16 +82,16 @@ export default function DocumentAnalyzer() {
     <section id="analisis-ia" className="section-padding">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Analiza tu Contrato con IA</h2>
+          <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Analice su Contrato con IA</h2>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-foreground/80">
-            Sube tu contrato de alquiler (PDF o imagen) y nuestra IA identificará cláusulas potencialmente abusivas o injustas, dándote claridad y poder de negociación.
+            Suba su contrato de arriendo (PDF o imagen) y nuestra IA identificará cláusulas potencialmente abusivas o injustas, dándole claridad y poder de negociación.
           </p>
         </div>
 
         <Card className="max-w-4xl mx-auto bg-white-a05 border-white-a10 rounded-xl p-6 md:p-10 shadow-lg">
           <CardHeader className="p-0 text-center">
             <CardTitle className="text-2xl font-bold font-headline">Herramienta de Análisis de Contratos</CardTitle>
-            <CardDescription className="mt-2 text-foreground/70">Sube tu documento para recibir un análisis instantáneo.</CardDescription>
+            <CardDescription className="mt-2 text-foreground/70">Suba su documento para recibir un análisis instantáneo.</CardDescription>
           </CardHeader>
           <CardContent className="p-0 mt-8">
             <div className="grid w-full items-center gap-4">
@@ -167,7 +167,7 @@ export default function DocumentAnalyzer() {
                   <div className="text-center p-8 border-2 border-dashed border-primary/30 rounded-lg bg-primary/10">
                     <ShieldCheck className="mx-auto h-12 w-12 text-primary mb-4" />
                     <p className="text-lg font-semibold text-primary">¡Buenas noticias!</p>
-                    <p className="text-sm text-primary/80">No se han encontrado cláusulas claramente injustas en un análisis preliminar. Para una revisión exhaustiva, considera una consulta legal.</p>
+                    <p className="text-sm text-primary/80">No se han encontrado cláusulas claramente injustas en un análisis preliminar. Para una revisión exhaustiva, considere una consulta legal.</p>
                   </div>
                 )}
               </div>
