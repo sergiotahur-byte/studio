@@ -9,10 +9,11 @@ const packages = [
     description: 'Para dudas puntuales y orientación rápida.',
     features: [
       'Videollamada de 30 minutos',
-      'Resolución de una duda concreta',
+      'Evaluación inicial del caso',
       'Análisis verbal preliminar',
       'Revisión del contrato de arrendamiento y sus anexos',
       'Acción prejudicial',
+      'Plan de acción rápido',
     ],
     isPopular: false,
     cta: 'Comprar Consulta',
