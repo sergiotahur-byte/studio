@@ -49,6 +49,19 @@ const packages = [
     cta: 'Comprar Consulta',
     stripeLink: '#',
   },
+  {
+    name: 'Defensa Jurídica Especializada',
+    price: '$450',
+    description: 'Protección legal completa para propietarios ante arrendatarios problemáticos.',
+    features: [
+      'Acciones extrajudiciales y judiciales contra arrendatarios morosos',
+      'Asesoría legal integral y acompañamiento personalizado hasta la culminación',
+      'Gestión documental, notificaciones y seguimiento continuo',
+    ],
+    isPopular: false,
+    cta: 'Contratar Defensa',
+    stripeLink: '#',
+  },
 ];
 
 export default function ConsultationPackages() {
@@ -61,7 +74,7 @@ export default function ConsultationPackages() {
             Elija la consulta que mejor se adapte a sus necesidades para obtener asesoramiento legal experto.
           </p>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
           {packages.map((pkg) => (
             <Card
               key={pkg.name}
