@@ -11,7 +11,7 @@ export default function Hero() {
             Defendemos su Propiedad. Recuperamos su Tranquilidad.
           </h1>
           <p className="max-w-2xl mx-auto text-lg lg:text-xl text-foreground/80 mb-10">
-            Expertos en recuperación de predios y defensa de propietarios en Colombia. Analice su contrato de arriendo con nuestra IA y obtenga una consulta legal especializada.
+            Expertos en recuperación de inmuebles y defensa de propietarios en Colombia. Analice su contrato de arriendo con nuestra IA y obtenga una consulta legal especializada.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-7 px-8">

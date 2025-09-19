@@ -5,7 +5,7 @@ import ParticleBackground from '@/components/animations/particle-background';
 
 export const metadata: Metadata = {
   title: 'Recuperaciones Jurídicas',
-  description: 'Expertos en recuperación de predios y defensa de propietarios en Colombia.',
+  description: 'Expertos en recuperación de inmuebles y defensa de propietarios en Colombia.',
 };
 
 export default function RootLayout({

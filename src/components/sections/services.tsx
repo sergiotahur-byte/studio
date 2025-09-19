@@ -4,8 +4,8 @@ import { Gavel, Home, ShieldCheck } from 'lucide-react';
 const services = [
   {
     icon: <Home className="h-10 w-10 text-accent" />,
-    title: 'Recuperación de Predios',
-    description: 'Gestionamos el proceso de restitución de inmueble arrendado para recuperar su predio de arrendatarios morosos o incumplidos de forma rápida y eficiente.',
+    title: 'Recuperación de Inmuebles',
+    description: 'Gestionamos el proceso de restitución de inmueble arrendado para recuperar su inmueble de arrendatarios morosos o incumplidos de forma rápida y eficiente.',
   },
   {
     icon: <ShieldCheck className="h-10 w-10 text-accent" />,
