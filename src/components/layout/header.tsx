@@ -1,9 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { Scale } from 'lucide-react';
 
 const navLinks = [
   { name: 'Servicios', href: '#servicios' },
@@ -33,7 +33,7 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-foreground">
-            <Image src="https://i.imgur.com/plB88XC.png" alt="Recuperaciones Jurídicas Logo" width={40} height={40} />
+            <Scale className="h-10 w-10 text-primary" />
             <span className="font-headline">Recuperaciones Jurídicas</span>
           </Link>
 
