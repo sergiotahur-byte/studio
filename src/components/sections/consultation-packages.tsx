@@ -55,9 +55,11 @@ const packages = [
     price: '$450',
     description: 'Protección legal completa para propietarios ante arrendatarios problemáticos.',
     features: [
+      'Análisis completo y estrategia personalizada',
       'Acciones extrajudiciales y judiciales contra arrendatarios morosos',
-      'Asesoría legal integral y acompañamiento personalizado hasta la culminación',
-      'Gestión documental, notificaciones y seguimiento continuo',
+      'Representación legal',
+      'Gestión documental y notificaciones',
+      'Seguimiento continuo hasta resolución',
     ],
     isPopular: false,
     cta: 'Contratar Defensa',
