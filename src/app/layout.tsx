@@ -4,7 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import ParticleBackground from '@/components/animations/particle-background';
 
 export const metadata: Metadata = {
-  title: 'Recuperaciones Jurídicas Colombia',
+  title: 'Recuperaciones Jurídicas',
   description: 'Expertos en recuperación de predios y defensa de propietarios en Colombia.',
 };
 
