@@ -2,6 +2,7 @@
 
 import { z } from 'zod';
 import { analyzeLeaseAgreement as analyzeLeaseAgreementFlow, AnalyzeLeaseAgreementOutput } from '@/ai/flows/analyze-lease-agreement';
+import nodemailer from 'nodemailer';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres." }),
@@ -23,10 +24,33 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     };
   }
 
+  const { name, email, message } = validatedFields.data;
+
   try {
-    // Here you would typically send an email or save to a database
-    console.log('Contact form submitted:');
-    console.log(validatedFields.data);
+    const transporter = nodemailer.createTransport({
+      host: process.env.EMAIL_HOST,
+      port: Number(process.env.EMAIL_PORT),
+      secure: Number(process.env.EMAIL_PORT) === 465, // true for 465, false for other ports
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    await transporter.sendMail({
+      from: `"${name}" <${process.env.EMAIL_USER}>`, // sender address
+      to: 'servicio@recuperacionesjuridicas.lat', // list of receivers
+      replyTo: email,
+      subject: 'Nuevo Mensaje de Contacto desde la Web', // Subject line
+      html: `
+        <h1>Nuevo Mensaje de Contacto</h1>
+        <p><strong>Nombre:</strong> ${name}</p>
+        <p><strong>Correo Electrónico:</strong> ${email}</p>
+        <p><strong>Mensaje:</strong></p>
+        <p>${message}</p>
+      `,
+    });
+    
     return { message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.', errors: {} };
   } catch (e) {
     console.error(e);
