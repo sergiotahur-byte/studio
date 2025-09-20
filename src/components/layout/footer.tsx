@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Balance } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -8,7 +7,8 @@ export default function Footer() {
       <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="flex items-center gap-2">
-            <Image src="https://i.imgur.com/gOFq33q.jpeg" alt="Recuperaciones Jurídicas Logo" width={24} height={24} className="rounded-sm" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://i.imgur.com/gOFq33q.jpeg" alt="Recuperaciones Jurídicas Logo" width={24} height={24} className="rounded-sm" />
             <span className="font-bold text-lg font-headline">Recuperaciones Jurídicas</span>
           </div>
           <p className="text-sm text-foreground/60">&copy; {new Date().getFullYear()} Recuperaciones Jurídicas. Todos los derechos reservados.</p>
