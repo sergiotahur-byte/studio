@@ -17,7 +17,7 @@ const packages = [
     ],
     isPopular: false,
     cta: 'Comprar Consulta',
-    stripeLink: '#',
+    paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
   },
   {
     name: 'Consulta Estratégica',
@@ -33,7 +33,7 @@ const packages = [
     ],
     isPopular: true,
     cta: 'Comprar Consulta',
-    stripeLink: '#',
+    paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
   },
   {
     name: 'Revisión de Contrato',
@@ -48,7 +48,7 @@ const packages = [
     ],
     isPopular: false,
     cta: 'Comprar Consulta',
-    stripeLink: '#',
+    paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
   },
   {
     name: 'Defensa Jurídica Especializada',
@@ -63,7 +63,7 @@ const packages = [
     ],
     isPopular: false,
     cta: 'Contratar Defensa',
-    stripeLink: '#',
+    paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
   },
 ];
 
@@ -110,7 +110,7 @@ export default function ConsultationPackages() {
               </CardContent>
               <CardFooter className="p-8 pt-0">
                 <Button asChild size="lg" className={`w-full ${pkg.isPopular ? 'bg-accent text-accent-foreground hover:bg-accent/90' : 'bg-primary hover:bg-primary/90'}`}>
-                  <a href={pkg.stripeLink}>{pkg.cta}</a>
+                  <a href={pkg.paymentLink} target="_blank" rel="noopener noreferrer">{pkg.cta}</a>
                 </Button>
               </CardFooter>
             </Card>
