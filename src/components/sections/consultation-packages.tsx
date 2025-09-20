@@ -16,7 +16,7 @@ const packages = [
       'Plan de acción rápido',
     ],
     isPopular: false,
-    cta: 'Comprar Consulta',
+    cta: 'Pagar Ahora',
     paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
   },
   {
@@ -32,7 +32,7 @@ const packages = [
       'Acompañamiento personalizado',
     ],
     isPopular: true,
-    cta: 'Comprar Consulta',
+    cta: 'Pagar Ahora',
     paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
   },
   {
@@ -47,7 +47,7 @@ const packages = [
       'Suministro de contratos de arrendamiento y documentos complementarios dependiendo del perfil del arrendador',
     ],
     isPopular: false,
-    cta: 'Comprar Consulta',
+    cta: 'Pagar Ahora',
     paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
   },
   {
@@ -62,7 +62,7 @@ const packages = [
       'Seguimiento continuo hasta resolución',
     ],
     isPopular: false,
-    cta: 'Contratar Defensa',
+    cta: 'Pagar Ahora',
     paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
   },
 ];
