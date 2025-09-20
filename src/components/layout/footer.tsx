@@ -1,7 +1,10 @@
 import Link from 'next/link';
 
-// Base64 encoded logo
-const logoSrc = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAPDw8QEA8QDw8PDg8ODw8QEBAQEA8PFREWFhYVFhMYHSggGBolGxMVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OFxAQFysfFR0rLS0rLSstLSstLSstKy0tKy0rLSstLS0tLS0tLS0tKy0rLS0rLS0tLS0tLS0tLSstLf/AABEIAOEA4QMBEQACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAAAQIDBAUGB//EADcQAAIBAgQDBgQEBgMAAAAAAAABAgMRBCExBRJBUWEGEyJxgZGhFDKxwdFS4fAVIyQzU/FicoL/xAAZAQEBAQEBAQAAAAAAAAAAAAAAAQIDBAX/xAAjEQEBAQEAAgICAgMBAAAAAAAAAQIREiExA0FRBBMiMmFC/9v/AASg4JptJNNOzT1TXYpAEYKMd5PzZpTjH3m/RfcC6V01Zq6fR9CnKCksrSfcD42e2j9yS/UqjSjH4Vfv3fmwLpFSSyuz7EciWo0ozVpK/fqvJlU6MI/CkvN7v5sD4LNWvayu/IvRoSm7RXq9kvNhSpxmkmrpaLo/NDhCMVZJRW6S0AxhSjBWWret236spAAUAAAAAAAAAAAAAAAAAAAAAAAAAEACIyazK6fVPQqdKE/iS89n80VqjKLvF3XR/ozOpxbV0mntbVAfKpSlHWSa8zSnTlP4Vfv2XzY5Qoylu0uz1f4L4Uow+GNvXu/NgMI0Yx11l3f4LAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAIAUAigAQAogKAAAEACIyUldOzXRqzKdKlN3lFN9dpea0YpZmnunqt9iL0JxeZNrrfR+qAwlh4PZteln+BRLDuPtRe/Xf1Zq4prZp+aFODvlejd0ugHNk4yV07NdU7MpRgpNtKzaTdt7LQZzoRlrs+8Xb+hq/Qmt4prvb9GQcknZ2vZ3V97Pcu4UJTdopv8F5sVTDKXxxS7x1/I0hRhDSOr7vX8AcYUYQ1jr3er+y/JYAFAAAAAAAAAAAAAAAAAAAAAAAAAABAUAIAUAAAEACAFABABQAgBQAAAAAAAAAAAEUAKAAAAAAAoCAFAAAAAAAAAAAAAAAUABCgADpYDB4at/kl/tk0MLWf+GXzS/mjeAcpYXErdw+bf8AIrlgK6+zL1Tj+jOgA5csJXWzpyXk0yqOHqSlaMZN9kmzpagHKjgKy+KP1kl+rNI4LEx+xJf4ZNe7Z0ABzlhK63pyfk0yrg6v8AkS/2s6YgDkzwtaHtxkvNafeUexq2zcsl73wu/e+h1zGFWE9pRb6X1Xk+gHLjTqTlaKlKT2SV2XwwleW6a82l+rNI4amviTl5WX4ZasLSTvlfzbf5gccMDf/ABJLyjH/AFMyhgKS+JSn5uS/KNsA5scHSj9WLfdty/NjSNOEdopLySQqAIoAAAAAAAAAAAAAAAAAAAAAIACgAAAAIACgAABAoAIAAUEUAAFABQAAAAAAAQAUAEAUAAAAAAAAAAAAAAABAoAigAAAACgAgBQAAAAAAUEAKACAAAAAAAAAAAAAAAAAAAAAAAAAAAAigAAAoAIAUAAAAAAAAAABQAgBQAAAAAAAAAAEAUAAARQAAUAEAFAAAABAUAEAKAAAAAAAAAAigAP/2Q==";
+const Logo = () => (
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 0C22.3858 0 0 22.3858 0 50C0 77.6142 22.3858 100 50 100C77.6142 100 100 77.6142 100 50C100 22.3858 77.6142 0 50 0ZM50 8.33333C73.0122 8.33333 91.6667 26.9878 91.6667 50C91.6667 73.0122 73.0122 91.6667 50 91.6667C26.9878 91.6667 8.33333 73.0122 8.33333 50C8.33333 26.9878 26.9878 8.33333 50 8.33333ZM50 25L25 37.5V62.5L50 75L75 62.5V37.5L50 25ZM50 32.125L66.6667 41.25V58.75L50 67.875L33.3333 58.75V41.25L50 32.125Z" fill="hsl(var(--accent))"/>
+  </svg>
+);
 
 export default function Footer() {
   return (
@@ -9,7 +12,7 @@ export default function Footer() {
       <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="flex items-center gap-2">
-            <img src={logoSrc} alt="Recuperaciones Jurídicas Logo" width={24} height={24} className="rounded-sm" />
+            <Logo />
             <span className="font-bold text-lg font-headline">Recuperaciones Jurídicas</span>
           </div>
           <p className="text-sm text-foreground/60">&copy; {new Date().getFullYear()} Recuperaciones Jurídicas. Todos los derechos reservados.</p>
