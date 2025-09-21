@@ -47,11 +47,11 @@ const ContractReviewPackage = () => {
 
   const reviewOptions = {
     residencial: {
-      price: '$100',
+      price: '$50',
       paymentLink: 'https://checkout.wompi.co/l/test_VPOS_FNYa9d',
     },
     comercial: {
-      price: '$150',
+      price: '$75',
       paymentLink: 'https://checkout.wompi.co/l/test_VPOS_BoCjF7',
     },
   };
