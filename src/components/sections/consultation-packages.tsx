@@ -59,7 +59,7 @@ const ContractReviewPackage = () => {
   const selectedOption = contractType === 'comercial' ? reviewOptions.comercial : reviewOptions.residencial;
   
   const features = [
-      'Revisión o elaboración exhaustiva de contrato',
+      'Revisión exhaustiva de contrato',
       'Informe escrito con cláusulas a modificar o incluir',
       'Propuesta de redacción alternativa',
       'Llamada de 15 min. para resolver dudas',
@@ -71,7 +71,7 @@ const ContractReviewPackage = () => {
       className="flex flex-col bg-white-a05 border-white-a10 rounded-xl shadow-lg transition-transform duration-300 hover:-translate-y-2"
     >
       <CardHeader className="p-8">
-        <CardTitle className="text-2xl font-bold font-headline">Revisión o Elaboración de Contrato</CardTitle>
+        <CardTitle className="text-2xl font-bold font-headline">Revisión de Contrato</CardTitle>
         <CardDescription className="text-foreground/70">Garantiza la legalidad y equidad de tu contrato, ya sea residencial o comercial.</CardDescription>
         <div className="mt-4">
           <span className="text-5xl font-extrabold">{selectedOption.price}</span>
