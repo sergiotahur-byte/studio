@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check } from 'lucide-react';
+import { Check, PlusCircle } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 
@@ -40,21 +40,6 @@ const packages = [
     cta: 'Pagar Ahora',
     paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
   },
-  {
-    name: 'Defensa Jurídica Especializada',
-    price: '$450',
-    description: 'Protección legal completa para propietarios ante arrendatarios problemáticos.',
-    features: [
-      'Análisis completo y estrategia personalizada',
-      'Acciones extrajudiciales y judiciales contra arrendatarios morosos',
-      'Representación legal',
-      'Gestión documental y notificaciones',
-      'Seguimiento continuo hasta resolución',
-    ],
-    isPopular: false,
-    cta: 'Pagar Ahora',
-    paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
-  },
 ];
 
 const ContractReviewPackage = () => {
@@ -83,7 +68,7 @@ const ContractReviewPackage = () => {
 
   return (
      <Card
-      className="flex flex-col bg-white-a05 border-white-a10 rounded-xl shadow-lg transition-transform duration-300 hover:-translate-y-2 lg:col-span-1"
+      className="flex flex-col bg-white-a05 border-white-a10 rounded-xl shadow-lg transition-transform duration-300 hover:-translate-y-2"
     >
       <CardHeader className="p-8">
         <CardTitle className="text-2xl font-bold font-headline">Revisión o Elaboración de Contrato</CardTitle>
@@ -96,18 +81,18 @@ const ContractReviewPackage = () => {
       <CardContent className="p-8 pt-0 flex-grow">
         <RadioGroup defaultValue="residencial" onValueChange={setContractType} className="mb-6 grid grid-cols-2 gap-4">
           <div>
-            <RadioGroupItem value="residencial" id="residencial" className="peer sr-only" />
+            <RadioGroupItem value="residencial" id="review-residencial" className="peer sr-only" />
             <Label
-              htmlFor="residencial"
+              htmlFor="review-residencial"
               className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
             >
               Residencial
             </Label>
           </div>
           <div>
-            <RadioGroupItem value="comercial" id="comercial" className="peer sr-only" />
+            <RadioGroupItem value="comercial" id="review-comercial" className="peer sr-only" />
             <Label
-              htmlFor="comercial"
+              htmlFor="review-comercial"
               className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
             >
               Comercial
@@ -132,6 +117,85 @@ const ContractReviewPackage = () => {
   );
 }
 
+const CustomContractPackage = () => {
+  const [contractType, setContractType] = useState('residencial');
+
+  const creationOptions = {
+    residencial: {
+      price: '$50',
+      paymentLink: 'https://checkout.wompi.co/l/test_VPOS_xxxxxx', // Replace with actual link
+    },
+    comercial: {
+      price: '$80',
+      paymentLink: 'https://checkout.wompi.co/l/test_VPOS_yyyyyy', // Replace with actual link
+    },
+  };
+  
+  const selectedOption = contractType === 'comercial' ? creationOptions.comercial : creationOptions.residencial;
+
+  const features = [
+    'Contrato a la medida (residencial o comercial)',
+    'Asesoría legal básica sobre derechos y deberes',
+    'Revisión de documentos del arrendatario/propietario',
+    'Entrega en PDF listo para firmar',
+  ];
+
+  return (
+    <Card
+      className="flex flex-col bg-white-a05 border-white-a10 rounded-xl shadow-lg transition-transform duration-300 hover:-translate-y-2"
+    >
+      <CardHeader className="p-8">
+        <CardTitle className="text-2xl font-bold font-headline">Elaboración de Contrato Personalizado</CardTitle>
+        <CardDescription className="text-foreground/70">Un contrato a la medida para tu tranquilidad.</CardDescription>
+        <div className="mt-4">
+          <span className="text-foreground/70 text-sm">Desde</span>
+          <span className="text-5xl font-extrabold ml-2">{selectedOption.price}</span>
+          <span className="text-foreground/70"> USD</span>
+        </div>
+      </CardHeader>
+      <CardContent className="p-8 pt-0 flex-grow">
+        <RadioGroup defaultValue="residencial" onValueChange={setContractType} className="mb-6 grid grid-cols-2 gap-4">
+          <div>
+            <RadioGroupItem value="residencial" id="creation-residencial" className="peer sr-only" />
+            <Label
+              htmlFor="creation-residencial"
+              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+            >
+              Residencial Básico
+            </Label>
+          </div>
+          <div>
+            <RadioGroupItem value="comercial" id="creation-comercial" className="peer sr-only" />
+            <Label
+              htmlFor="creation-comercial"
+              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+            >
+              Comercial / Especial
+            </Label>
+          </div>
+        </RadioGroup>
+        <ul className="space-y-3">
+          {features.map((feature) => (
+            <li key={feature} className="flex items-start">
+              <Check className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
+              <span className="text-foreground/80">{feature}</span>
+            </li>
+          ))}
+          <li className="flex items-start">
+            <PlusCircle className="h-5 w-5 text-accent/80 mr-3 mt-1 flex-shrink-0" />
+            <span className="text-foreground/70 text-sm">Ofrecemos descuentos por volumen.</span>
+          </li>
+        </ul>
+      </CardContent>
+      <CardFooter className="p-8 pt-0">
+        <Button asChild size="lg" className="w-full bg-primary hover:bg-primary/90">
+          <a href={selectedOption.paymentLink} target="_blank" rel="noopener noreferrer">Pagar Ahora</a>
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
 
 export default function ConsultationPackages() {
   return (
@@ -143,12 +207,12 @@ export default function ConsultationPackages() {
             Elija la consulta que mejor se adapte a sus necesidades para obtener asesoramiento legal experto.
           </p>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
           {packages.map((pkg) => (
             <Card
               key={pkg.name}
               className={`flex flex-col bg-white-a05 border-white-a10 rounded-xl shadow-lg transition-transform duration-300 ${
-                pkg.isPopular ? 'border-accent shadow-accent/20 lg:scale-105' : 'hover:-translate-y-2'
+                pkg.isPopular ? 'border-accent shadow-accent/20 md:scale-105' : 'hover:-translate-y-2'
               }`}
             >
               {pkg.isPopular && (
@@ -182,6 +246,7 @@ export default function ConsultationPackages() {
             </Card>
           ))}
            <ContractReviewPackage />
+           <CustomContractPackage />
         </div>
       </div>
     </section>
