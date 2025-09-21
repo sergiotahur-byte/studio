@@ -1,6 +1,11 @@
+'use client';
+
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check } from 'lucide-react';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
 
 const packages = [
   {
@@ -36,21 +41,6 @@ const packages = [
     paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
   },
   {
-    name: 'Revisión de Contrato',
-    price: '$100',
-    description: 'Garantiza la legalidad y equidad de tu contrato.',
-    features: [
-      'Revisión exhaustiva de contrato de arriendo',
-      'Informe escrito con cláusulas a modificar',
-      'Propuesta de redacción alternativa',
-      'Llamada de 15 min. para resolver dudas',
-      'Suministro de contratos de arrendamiento y documentos complementarios dependiendo del perfil del arrendador',
-    ],
-    isPopular: false,
-    cta: 'Pagar Ahora',
-    paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
-  },
-  {
     name: 'Defensa Jurídica Especializada',
     price: '$450',
     description: 'Protección legal completa para propietarios ante arrendatarios problemáticos.',
@@ -66,6 +56,82 @@ const packages = [
     paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
   },
 ];
+
+const ContractReviewPackage = () => {
+  const [contractType, setContractType] = useState('residencial');
+
+  const reviewOptions = {
+    residencial: {
+      price: '$100',
+      paymentLink: 'https://checkout.wompi.co/l/test_VPOS_FNYa9d',
+    },
+    comercial: {
+      price: '$150',
+      paymentLink: 'https://checkout.wompi.co/l/test_VPOS_BoCjF7',
+    },
+  };
+
+  const selectedOption = contractType === 'comercial' ? reviewOptions.comercial : reviewOptions.residencial;
+  
+  const features = [
+      'Revisión o elaboración exhaustiva de contrato',
+      'Informe escrito con cláusulas a modificar o incluir',
+      'Propuesta de redacción alternativa',
+      'Llamada de 15 min. para resolver dudas',
+      'Suministro de documentos complementarios según el perfil',
+    ];
+
+  return (
+     <Card
+      className="flex flex-col bg-white-a05 border-white-a10 rounded-xl shadow-lg transition-transform duration-300 hover:-translate-y-2 lg:col-span-1"
+    >
+      <CardHeader className="p-8">
+        <CardTitle className="text-2xl font-bold font-headline">Revisión o Elaboración de Contrato</CardTitle>
+        <CardDescription className="text-foreground/70">Garantiza la legalidad y equidad de tu contrato, ya sea residencial o comercial.</CardDescription>
+        <div className="mt-4">
+          <span className="text-5xl font-extrabold">{selectedOption.price}</span>
+          <span className="text-foreground/70"> USD</span>
+        </div>
+      </CardHeader>
+      <CardContent className="p-8 pt-0 flex-grow">
+        <RadioGroup defaultValue="residencial" onValueChange={setContractType} className="mb-6 grid grid-cols-2 gap-4">
+          <div>
+            <RadioGroupItem value="residencial" id="residencial" className="peer sr-only" />
+            <Label
+              htmlFor="residencial"
+              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+            >
+              Residencial
+            </Label>
+          </div>
+          <div>
+            <RadioGroupItem value="comercial" id="comercial" className="peer sr-only" />
+            <Label
+              htmlFor="comercial"
+              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+            >
+              Comercial
+            </Label>
+          </div>
+        </RadioGroup>
+        <ul className="space-y-3">
+          {features.map((feature) => (
+            <li key={feature} className="flex items-start">
+              <Check className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
+              <span className="text-foreground/80">{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </CardContent>
+      <CardFooter className="p-8 pt-0">
+        <Button asChild size="lg" className="w-full bg-primary hover:bg-primary/90">
+          <a href={selectedOption.paymentLink} target="_blank" rel="noopener noreferrer">Pagar Ahora</a>
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
 
 export default function ConsultationPackages() {
   return (
@@ -115,6 +181,7 @@ export default function ConsultationPackages() {
               </CardFooter>
             </Card>
           ))}
+           <ContractReviewPackage />
         </div>
       </div>
     </section>
