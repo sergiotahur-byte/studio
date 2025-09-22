@@ -81,8 +81,8 @@ body {
     transform: translateY(0);
   }
 
-  .logo-shadow {
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+  .logo-filter {
+    filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
   }
 }
 
