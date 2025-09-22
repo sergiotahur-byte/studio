@@ -4,6 +4,12 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 
 const navLinks = [
   { name: 'Servicios', href: '#servicios' },
@@ -17,6 +23,7 @@ const navLinks = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,16 +40,16 @@ export default function Header() {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center justify-center py-4 space-y-4">
-          <Link href="/" className="flex flex-col items-center gap-2 text-xl font-bold text-foreground">
+        <div className="flex items-center justify-between py-4">
+          <Link href="/" className="flex items-center gap-3 text-xl font-bold text-foreground">
             <Image
                 src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.firebasestorage.app/o/logo.png1.jpg?alt=media&token=bc9760bf-8837-4b16-b1ce-714472abec2a"
                 alt="Recuperaciones Jurídicas Logo"
-                width={192}
-                height={192}
-                className="h-48 w-48 object-contain"
+                width={40}
+                height={40}
+                className="h-10 w-10 object-contain"
               />
-            <span className="sm:inline text-2xl">Recuperaciones Jurídicas</span>
+            <span className="hidden sm:inline text-lg">Recuperaciones Jurídicas</span>
           </Link>
 
           <nav className="hidden lg:flex items-center space-x-1">
@@ -57,8 +64,44 @@ export default function Header() {
               <a href="#contacto">Consulta Gratuita</a>
             </Button>
           </nav>
-          
-          {/* Mobile menu could be added here */}
+
+          <div className="lg:hidden">
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Abrir menú</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left">
+                <div className="flex flex-col space-y-4 p-6">
+                   <Link href="/" className="flex items-center gap-3 text-xl font-bold text-foreground mb-4" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Image
+                          src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.firebasestorage.app/o/logo.png1.jpg?alt=media&token=bc9760bf-8837-4b16-b1ce-714472abec2a"
+                          alt="Recuperaciones Jurídicas Logo"
+                          width={32}
+                          height={32}
+                          className="h-8 w-8 object-contain"
+                        />
+                      <span>Recuperaciones Jurídicas</span>
+                    </Link>
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      className="text-lg text-foreground/80 hover:text-foreground"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                  <Button asChild className="mt-4 bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => setIsMobileMenuOpen(false)}>
+                    <a href="#contacto">Consulta Gratuita</a>
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>
