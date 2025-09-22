@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="flex items-center gap-3">
-            <Image src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.appspot.com/o/white-logo.png?alt=media&token=5b263303-a262-4363-88b0-58319e79a838" alt="Recuperaciones Jurídicas Logo" width={32} height={32} className="w-8 h-8" />
+            <Image src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.firebasestorage.app/o/logo.png.jpg?alt=media&token=9ed5aba5-0db3-47a0-b90c-870fa55c0370" alt="Recuperaciones Jurídicas Logo" width={32} height={32} className="w-8 h-8 logo-background" />
             <span className="font-bold text-lg font-headline">Recuperaciones Jurídicas</span>
           </div>
           <p className="text-sm text-foreground/60">&copy; {new Date().getFullYear()} Recuperaciones Jurídicas. Todos los derechos reservados.</p>
