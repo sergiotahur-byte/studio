@@ -23,7 +23,7 @@ const blogPosts = [
 
 export default function Blog() {
   return (
-    <section id="blog" className="section-padding bg-white-a05">
+    <section id="blog" className="section-padding bg-secondary">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Blog Legal</h2>
@@ -33,12 +33,12 @@ export default function Blog() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post) => (
-            <Card key={post.title} className="bg-white-a05 border-white-a10 flex flex-col rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300">
+            <Card key={post.title} className="bg-card flex flex-col rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300">
               <CardHeader>
                 <CardTitle className="text-xl font-bold font-headline">{post.title}</CardTitle>
               </CardHeader>
               <CardContent className="flex-grow">
-                <CardDescription className="text-foreground/70">{post.description}</CardDescription>
+                <CardDescription className="text-muted-foreground">{post.description}</CardDescription>
               </CardContent>
               <CardFooter>
                  <Button variant="link" asChild className="p-0 text-accent">

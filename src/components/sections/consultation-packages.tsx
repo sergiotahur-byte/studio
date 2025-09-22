@@ -68,14 +68,14 @@ const ContractReviewPackage = () => {
 
   return (
      <Card
-      className="flex flex-col bg-white-a05 border-white-a10 rounded-xl shadow-lg transition-transform duration-300 hover:-translate-y-2"
+      className="flex flex-col bg-card rounded-xl shadow-lg transition-transform duration-300 hover:-translate-y-2"
     >
       <CardHeader className="p-8">
         <CardTitle className="text-2xl font-bold font-headline">Revisión de Contrato</CardTitle>
-        <CardDescription className="text-foreground/70">Garantiza la legalidad y equidad de tu contrato, ya sea residencial o comercial.</CardDescription>
+        <CardDescription className="text-muted-foreground">Garantiza la legalidad y equidad de tu contrato, ya sea residencial o comercial.</CardDescription>
         <div className="mt-4">
           <span className="text-5xl font-extrabold">{selectedOption.price}</span>
-          <span className="text-foreground/70"> USD</span>
+          <span className="text-muted-foreground"> USD</span>
         </div>
       </CardHeader>
       <CardContent className="p-8 pt-0 flex-grow">
@@ -142,15 +142,15 @@ const CustomContractPackage = () => {
 
   return (
     <Card
-      className="flex flex-col bg-white-a05 border-white-a10 rounded-xl shadow-lg transition-transform duration-300 hover:-translate-y-2"
+      className="flex flex-col bg-card rounded-xl shadow-lg transition-transform duration-300 hover:-translate-y-2"
     >
       <CardHeader className="p-8">
         <CardTitle className="text-2xl font-bold font-headline">Elaboración de Contrato Personalizado</CardTitle>
-        <CardDescription className="text-foreground/70">Un contrato a la medida para tu tranquilidad.</CardDescription>
+        <CardDescription className="text-muted-foreground">Un contrato a la medida para tu tranquilidad.</CardDescription>
         <div className="mt-4">
-          <span className="text-foreground/70 text-sm">Desde</span>
+          <span className="text-muted-foreground text-sm">Desde</span>
           <span className="text-5xl font-extrabold ml-2">{selectedOption.price}</span>
-          <span className="text-foreground/70"> USD</span>
+          <span className="text-muted-foreground"> USD</span>
         </div>
       </CardHeader>
       <CardContent className="p-8 pt-0 flex-grow">
@@ -199,7 +199,7 @@ const CustomContractPackage = () => {
 
 export default function ConsultationPackages() {
   return (
-    <section id="consultas" className="section-padding bg-white-a05">
+    <section id="consultas" className="section-padding bg-secondary">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Paquetes de Servicios</h2>
@@ -211,7 +211,7 @@ export default function ConsultationPackages() {
           {packages.map((pkg) => (
             <Card
               key={pkg.name}
-              className={`flex flex-col bg-white-a05 border-white-a10 rounded-xl shadow-lg transition-transform duration-300 ${
+              className={`flex flex-col bg-card rounded-xl shadow-lg transition-transform duration-300 ${
                 pkg.isPopular ? 'border-accent shadow-accent/20 md:scale-105' : 'hover:-translate-y-2'
               }`}
             >
@@ -222,10 +222,10 @@ export default function ConsultationPackages() {
               )}
               <CardHeader className="p-8">
                 <CardTitle className="text-2xl font-bold font-headline">{pkg.name}</CardTitle>
-                <CardDescription className="text-foreground/70">{pkg.description}</CardDescription>
+                <CardDescription className="text-muted-foreground">{pkg.description}</CardDescription>
                 <div className="mt-4">
                   <span className="text-5xl font-extrabold">{pkg.price}</span>
-                  <span className="text-foreground/70"> USD</span>
+                  <span className="text-muted-foreground"> USD</span>
                 </div>
               </CardHeader>
               <CardContent className="p-8 pt-0 flex-grow">

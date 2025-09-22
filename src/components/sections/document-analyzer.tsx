@@ -88,31 +88,31 @@ export default function DocumentAnalyzer() {
           </p>
         </div>
 
-        <Card className="max-w-4xl mx-auto bg-white-a05 border-white-a10 rounded-xl p-6 md:p-10 shadow-lg">
+        <Card className="max-w-4xl mx-auto bg-card p-6 md:p-10 shadow-lg">
           <CardHeader className="p-0 text-center">
             <CardTitle className="text-2xl font-bold font-headline">Herramienta de Análisis de Contratos</CardTitle>
-            <CardDescription className="mt-2 text-foreground/70">Suba su documento para recibir un análisis instantáneo.</CardDescription>
+            <CardDescription className="mt-2 text-muted-foreground">Suba su documento para recibir un análisis instantáneo.</CardDescription>
           </CardHeader>
           <CardContent className="p-0 mt-8">
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-2">
                 <Label htmlFor="lease-document" className="text-foreground/80">Documento de Arrendamiento</Label>
                 <div className="flex flex-col sm:flex-row gap-4 items-center">
-                  <Input id="lease-document" type="file" accept=".pdf,.png,.jpg,.jpeg" onChange={handleFileChange} className="bg-background border-white-a10 flex-grow" />
+                  <Input id="lease-document" type="file" accept=".pdf,.png,.jpg,.jpeg" onChange={handleFileChange} className="flex-grow" />
                   <Button onClick={handleAnalyze} disabled={isLoading || !file} className="w-full sm:w-auto bg-primary hover:bg-primary/90">
                     {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <ShieldCheck className="mr-2 h-4 w-4" />}
                     Analizar Ahora
                   </Button>
                 </div>
-                {file && <p className="text-sm text-foreground/60 mt-2">Archivo seleccionado: {file.name}</p>}
+                {file && <p className="text-sm text-muted-foreground mt-2">Archivo seleccionado: {file.name}</p>}
               </div>
             </div>
 
             {isLoading && (
-              <div className="text-center mt-8 p-8 border-2 border-dashed border-white-a10 rounded-lg">
+              <div className="text-center mt-8 p-8 border-2 border-dashed rounded-lg">
                 <Loader2 className="mx-auto h-12 w-12 text-primary animate-spin mb-4" />
                 <p className="text-lg font-semibold text-foreground">Analizando documento...</p>
-                <p className="text-sm text-foreground/70">Esto puede tardar unos segundos.</p>
+                <p className="text-sm text-muted-foreground">Esto puede tardar unos segundos.</p>
               </div>
             )}
 
@@ -129,7 +129,7 @@ export default function DocumentAnalyzer() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4 font-headline text-center">Resultados del Análisis</h3>
                 </div>
-                <Card className="bg-background border-white-a10 rounded-lg">
+                <Card className="bg-secondary">
                   <CardHeader>
                     <CardTitle>Resumen del Contrato</CardTitle>
                   </CardHeader>
@@ -139,21 +139,21 @@ export default function DocumentAnalyzer() {
                 </Card>
 
                 {analysisResult.unfairClauses && analysisResult.unfairClauses.length > 0 && (
-                   <Card className="bg-background border-white-a10 rounded-lg">
+                   <Card className="bg-secondary">
                     <CardHeader>
                       <CardTitle>Cláusulas Potencialmente Injustas Encontradas</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <Accordion type="single" collapsible className="w-full">
                         {analysisResult.unfairClauses.map((item, index) => (
-                          <AccordionItem key={index} value={`item-${index}`} className="border-white-a10">
+                          <AccordionItem key={index} value={`item-${index}`}>
                             <AccordionTrigger className="text-left hover:no-underline">
                               <div className="flex items-start gap-3">
                                 <AlertTriangle className="h-5 w-5 text-destructive flex-shrink-0 mt-1" />
                                 <span className="font-medium text-foreground">{item.clause}</span>
                               </div>
                             </AccordionTrigger>
-                            <AccordionContent className="pl-8 text-foreground/80">
+                            <AccordionContent className="pl-8 text-muted-foreground">
                               {item.explanation}
                             </AccordionContent>
                           </AccordionItem>

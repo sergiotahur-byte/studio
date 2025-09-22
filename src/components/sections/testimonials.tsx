@@ -56,7 +56,7 @@ export default function Testimonials() {
               return (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2">
                 <div className="p-1">
-                  <Card className="h-full bg-white-a05 border-white-a10 rounded-xl shadow-lg flex flex-col justify-between">
+                  <Card className="h-full bg-card rounded-xl shadow-lg flex flex-col justify-between">
                     <CardContent className="p-8 flex-grow">
                       <p className="text-lg text-foreground/90 italic mb-6">"{testimonial.quote}"</p>
                       <div className="flex items-center">
@@ -72,7 +72,7 @@ export default function Testimonials() {
                         )}
                         <div>
                           <p className="font-bold text-foreground">{testimonial.name}</p>
-                          <p className="text-sm text-foreground/70">{testimonial.title}</p>
+                          <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                         </div>
                       </div>
                     </CardContent>

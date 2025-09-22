@@ -48,8 +48,6 @@ export default {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        'white-a05': 'rgba(255, 255, 255, 0.05)',
-        'white-a10': 'rgba(255, 255, 255, 0.1)',
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',

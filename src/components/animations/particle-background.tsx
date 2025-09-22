@@ -34,7 +34,8 @@ const ParticleBackground = () => {
         this.size = Math.random() * 2 + 1;
         this.speedX = Math.random() * 0.4 - 0.2;
         this.speedY = Math.random() * 0.4 - 0.2;
-        this.color = `hsla(180, 100%, 75%, ${Math.random() * 0.5 + 0.2})`;
+        // Use a color that works with the new light theme
+        this.color = `hsla(221, 44%, 19%, ${Math.random() * 0.2 + 0.1})`;
       }
       update() {
         this.x += this.speedX;

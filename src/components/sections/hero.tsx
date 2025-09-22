@@ -20,7 +20,7 @@ export default function Hero() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild className="text-lg py-7 px-8 border-white-a10 hover:bg-white-a05">
+            <Button size="lg" variant="outline" asChild className="text-lg py-7 px-8 hover:bg-secondary">
               <Link href="#analisis-ia">
                 Analizar Documento
               </Link>

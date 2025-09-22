@@ -21,7 +21,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="servicios" className="section-padding bg-white-a05">
+    <section id="servicios" className="section-padding bg-background">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Nuestros Servicios Jurídicos</h2>
@@ -31,13 +31,13 @@ export default function Services() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="bg-white-a05 border-white-a10 text-center flex flex-col items-center p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300">
+            <Card key={index} className="bg-card text-center flex flex-col items-center p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300">
               <CardHeader className="p-0 mb-4">
                 {service.icon}
                 <CardTitle className="mt-4 text-2xl font-bold font-headline">{service.title}</CardTitle>
               </CardHeader>
               <CardContent className="p-0">
-                <p className="text-foreground/70">{service.description}</p>
+                <p className="text-muted-foreground">{service.description}</p>
               </CardContent>
             </Card>
           ))}
