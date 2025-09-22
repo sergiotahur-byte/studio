@@ -77,6 +77,6 @@ body {
     @apply py-20 px-4 sm:px-6 lg:py-28 lg:px-8;
   }
   main > section:first-of-type {
-    padding-top: 200px;
+    padding-top: 300px;
   }
 }
