@@ -38,9 +38,9 @@ export default function Header() {
             <Image
                 src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.firebasestorage.app/o/logo.png1.jpg?alt=media&token=bc9760bf-8837-4b16-b1ce-714472abec2a"
                 alt="Recuperaciones Jurídicas Logo"
-                width={64}
-                height={64}
-                className="h-16 w-16 object-contain"
+                width={96}
+                height={96}
+                className="h-24 w-24 object-contain"
               />
             <span className="sm:inline text-2xl">Recuperaciones Jurídicas</span>
           </Link>
