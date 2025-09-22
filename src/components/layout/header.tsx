@@ -33,16 +33,16 @@ export default function Header() {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-3 text-xl font-bold text-foreground">
+        <div className="flex flex-col items-center justify-center py-4 space-y-4">
+          <Link href="/" className="flex flex-col items-center gap-2 text-xl font-bold text-foreground">
             <Image
                 src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.firebasestorage.app/o/logo.png1.jpg?alt=media&token=bc9760bf-8837-4b16-b1ce-714472abec2a"
                 alt="Recuperaciones Jurídicas Logo"
-                width={40}
-                height={40}
-                className="h-10 w-10 object-contain"
+                width={64}
+                height={64}
+                className="h-16 w-16 object-contain"
               />
-            <span className="sm:inline">Recuperaciones Jurídicas</span>
+            <span className="sm:inline text-2xl">Recuperaciones Jurídicas</span>
           </Link>
 
           <nav className="hidden lg:flex items-center space-x-1">
@@ -53,12 +53,11 @@ export default function Header() {
                 </Link>
               </Button>
             ))}
+             <Button asChild className="ml-4 bg-primary hover:bg-primary/90 text-primary-foreground">
+              <a href="#contacto">Consulta Gratuita</a>
+            </Button>
           </nav>
           
-          <Button asChild className="hidden md:flex bg-primary hover:bg-primary/90 text-primary-foreground">
-            <a href="#contacto">Consulta Gratuita</a>
-          </Button>
-
           {/* Mobile menu could be added here */}
         </div>
       </div>

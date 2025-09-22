@@ -16,7 +16,7 @@ body {
     --popover-foreground: 222.2 84% 4.9%;
     --primary: 221 44% 19%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 98%;
+    --secondary: 0 0% 98%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -75,5 +75,8 @@ body {
 @layer components {
   .section-padding {
     @apply py-20 px-4 sm:px-6 lg:py-28 lg:px-8;
+  }
+  main > section:first-of-type {
+    padding-top: 200px;
   }
 }
