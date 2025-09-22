@@ -35,7 +35,7 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-3 text-xl font-bold text-foreground">
-            <Image src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.firebasestorage.app/o/logo.png.jpg?alt=media&token=9ed5aba5-0db3-47a0-b90c-870fa55c0370" alt="Recuperaciones Jurídicas Logo" width={40} height={40} className="w-auto h-10 logo-filter" />
+            <Image src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.appspot.com/o/white-logo.png?alt=media&token=5b263303-a262-4363-88b0-58319e79a838" alt="Recuperaciones Jurídicas Logo" width={40} height={40} className="w-auto h-10" />
             <span className="hidden sm:inline">Recuperaciones Jurídicas</span>
           </Link>
 
