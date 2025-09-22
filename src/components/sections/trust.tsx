@@ -13,9 +13,7 @@ export default function Trust() {
               height={128}
               className="h-32 w-32 rounded-full mx-auto mb-4 object-cover border-4 border-accent"
             />
-            <h3 className="text-2xl font-bold text-foreground">Sergio Galán</h3>
-            <p className="text-md text-accent mb-4">Abogado Fundador</p>
-            <h2 className="text-3xl font-extrabold text-foreground font-headline mb-4">Confianza y Respaldo Legal</h2>
+            <h2 className="text-3xl font-extrabold text-foreground font-headline mb-4 mt-8">Confianza y Respaldo Legal</h2>
             <p className="text-lg text-foreground/80 mb-6">
                 Ejercemos bajo la normatividad legal colombiana vigente. Nuestros servicios están respaldados por profesionales en derecho con experiencia comprobada.
             </p>
