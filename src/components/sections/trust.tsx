@@ -9,9 +9,9 @@ export default function Trust() {
             <Image 
               src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.appspot.com/o/Gal%C3%A1n.jpg?alt=media&token=8b85d838-ae6e-4f38-be7c-054da17e4508"
               alt="Foto del abogado fundador"
-              width={128}
-              height={128}
-              className="h-32 w-32 rounded-full mx-auto mb-4 object-cover border-4 border-accent"
+              width={160}
+              height={160}
+              className="h-40 w-40 rounded-full mx-auto mb-4 object-cover border-4 border-accent"
             />
             <h2 className="text-3xl font-extrabold text-foreground font-headline mb-4 mt-8">Confianza y Respaldo Legal</h2>
             <p className="text-lg text-foreground/80 mb-6">
