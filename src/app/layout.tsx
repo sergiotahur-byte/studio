@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import ParticleBackground from '@/components/animations/particle-background';
+import WhatsAppButton from '@/components/layout/whatsapp-button';
 
 export const metadata: Metadata = {
   title: 'Recuperaciones Jurídicas',
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body className="font-body antialiased relative">
         <ParticleBackground />
         <div className="relative z-10">{children}</div>
+        <WhatsAppButton />
         <Toaster />
       </body>
     </html>

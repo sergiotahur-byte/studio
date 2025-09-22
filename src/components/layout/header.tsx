@@ -8,6 +8,8 @@ const navLinks = [
   { name: 'Servicios', href: '#servicios' },
   { name: 'Análisis IA', href: '#analisis-ia' },
   { name: 'Consultas', href: '#consultas' },
+  { name: 'Blog', href: '#blog' },
+  { name: 'FAQ', href: '#faq' },
   { name: 'Testimonios', href: '#testimonios' },
   { name: 'Contacto', href: '#contacto' },
 ];
@@ -31,14 +33,14 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-foreground">
+          <Link href="/" className="flex items-center gap-2 text-xl font-bold text-foreground">
             <span className="font-headline">Recuperaciones Jurídicas</span>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-2 lg:space-x-4">
+          <nav className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <Button key={link.name} variant="ghost" asChild>
-                <Link href={link.href} className="text-foreground/80 hover:text-foreground">
+                <Link href={link.href} className="text-foreground/80 hover:text-foreground text-sm">
                   {link.name}
                 </Link>
               </Button>

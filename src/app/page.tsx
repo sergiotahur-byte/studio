@@ -7,6 +7,10 @@ import ConsultationPackages from '@/components/sections/consultation-packages';
 import Testimonials from '@/components/sections/testimonials';
 import Contact from '@/components/sections/contact';
 import ScrollRevealWrapper from '@/components/animations/scroll-reveal-wrapper';
+import Blog from '@/components/sections/blog';
+import Faq from '@/components/sections/faq';
+import Guarantee from '@/components/sections/guarantee';
+import Trust from '@/components/sections/trust';
 
 export default function Home() {
   return (
@@ -18,6 +22,10 @@ export default function Home() {
         <ScrollRevealWrapper>
           <Services />
         </ScrollRevealWrapper>
+        
+        <ScrollRevealWrapper>
+          <Guarantee />
+        </ScrollRevealWrapper>
 
         <ScrollRevealWrapper>
           <DocumentAnalyzer />
@@ -28,7 +36,19 @@ export default function Home() {
         </ScrollRevealWrapper>
 
         <ScrollRevealWrapper>
+          <Trust />
+        </ScrollRevealWrapper>
+
+        <ScrollRevealWrapper>
           <Testimonials />
+        </ScrollRevealWrapper>
+
+        <ScrollRevealWrapper>
+          <Blog />
+        </ScrollRevealWrapper>
+
+        <ScrollRevealWrapper>
+          <Faq />
         </ScrollRevealWrapper>
         
         <ScrollRevealWrapper>
