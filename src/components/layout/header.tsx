@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import {
   Sheet,
   SheetContent,
@@ -41,16 +41,16 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
-          <Link href="/" className="flex items-center gap-3 text-xl font-bold text-foreground">
-            <Image
-                src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.firebasestorage.app/o/logo.png1.jpg?alt=media&token=bc9760bf-8837-4b16-b1ce-714472abec2a"
-                alt="Recuperaciones Jurídicas Logo"
-                width={40}
-                height={40}
-                className="h-10 w-10 object-contain"
-              />
-            <span className="hidden sm:inline text-lg">Recuperaciones Jurídicas</span>
-          </Link>
+            <Link href="/" className="flex items-center gap-3 text-xl font-bold text-foreground">
+              <Image
+                  src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.firebasestorage.app/o/logo.png1.jpg?alt=media&token=bc9760bf-8837-4b16-b1ce-714472abec2a"
+                  alt="Recuperaciones Jurídicas Logo"
+                  width={192}
+                  height={192}
+                  className="h-24 w-24 object-contain"
+                />
+              <span className="hidden sm:inline text-lg">Recuperaciones Jurídicas</span>
+            </Link>
 
           <nav className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
@@ -79,9 +79,9 @@ export default function Header() {
                       <Image
                           src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.firebasestorage.app/o/logo.png1.jpg?alt=media&token=bc9760bf-8837-4b16-b1ce-714472abec2a"
                           alt="Recuperaciones Jurídicas Logo"
-                          width={32}
-                          height={32}
-                          className="h-8 w-8 object-contain"
+                          width={64}
+                          height={64}
+                          className="h-16 w-16 object-contain"
                         />
                       <span>Recuperaciones Jurídicas</span>
                     </Link>
