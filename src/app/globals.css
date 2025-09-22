@@ -80,11 +80,6 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-  .logo-background {
-    background-color: white;
-    border-radius: 9999px;
-    padding: 2px;
-  }
 }
 
 @layer components {
