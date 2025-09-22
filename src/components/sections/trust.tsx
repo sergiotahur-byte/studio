@@ -8,7 +8,7 @@ export default function Trust() {
         <div className="max-w-4xl mx-auto text-center">
             <Image 
               src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.appspot.com/o/Gal%C3%A1n.jpg?alt=media&token=8b85d838-ae6e-4f38-be7c-054da17e4508"
-              alt="Foto de Sergio Galán, Abogado Fundador"
+              alt="Foto del abogado fundador"
               width={128}
               height={128}
               className="h-32 w-32 rounded-full mx-auto mb-4 object-cover border-4 border-accent"
