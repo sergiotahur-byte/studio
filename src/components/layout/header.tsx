@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const navLinks = [
   { name: 'Servicios', href: '#servicios' },
@@ -34,7 +35,7 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-2 text-xl font-bold text-foreground">
-            <span className="font-headline">Recuperaciones Jurídicas</span>
+            <Image src="https://i.imgur.com/gK1q1y3.png" alt="Recuperaciones Jurídicas Logo" width={50} height={50} className="w-auto h-12" />
           </Link>
 
           <nav className="hidden lg:flex items-center space-x-1">
