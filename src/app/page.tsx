@@ -11,6 +11,7 @@ import Blog from '@/components/sections/blog';
 import Faq from '@/components/sections/faq';
 import Guarantee from '@/components/sections/guarantee';
 import Trust from '@/components/sections/trust';
+import WhyChooseUs from '@/components/sections/why-choose-us';
 
 export default function Home() {
   return (
@@ -21,6 +22,10 @@ export default function Home() {
 
         <ScrollRevealWrapper>
           <Services />
+        </ScrollRevealWrapper>
+
+        <ScrollRevealWrapper>
+          <WhyChooseUs />
         </ScrollRevealWrapper>
         
         <ScrollRevealWrapper>
