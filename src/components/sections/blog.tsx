@@ -3,8 +3,30 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { blogPosts } from '@/lib/blog-posts';
+import fs from 'fs';
+import path from 'path';
 
-export default function Blog() {
+async function getPostSummary(contentPath: string): Promise<string> {
+  try {
+    const fullPath = path.join(process.cwd(), contentPath);
+    const content = await fs.promises.readFile(fullPath, 'utf8');
+    // Extract the first paragraph. Assumes paragraphs are separated by a blank line.
+    return content.split('\n\n')[0] || 'Haz clic para leer más.';
+  } catch (error) {
+    console.error(`Error reading blog post summary from ${contentPath}:`, error);
+    return "No se pudo cargar la descripción.";
+  }
+}
+
+
+export default async function Blog() {
+  const postsWithSummary = await Promise.all(
+    blogPosts.map(async (post) => ({
+      ...post,
+      summary: await getPostSummary(post.contentPath),
+    }))
+  );
+
   return (
     <section id="blog" className="section-padding bg-secondary">
       <div className="container mx-auto">
@@ -15,13 +37,13 @@ export default function Blog() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
+          {postsWithSummary.map((post) => (
             <Card key={post.title} className="bg-card flex flex-col rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300">
               <CardHeader>
                 <CardTitle className="text-xl font-bold font-headline">{post.title}</CardTitle>
               </CardHeader>
               <CardContent className="flex-grow">
-                <CardDescription className="text-muted-foreground">{post.description}</CardDescription>
+                <CardDescription className="text-foreground/80">{post.summary}</CardDescription>
               </CardContent>
               <CardFooter>
                  <Button variant="link" asChild className="p-0 text-accent">
