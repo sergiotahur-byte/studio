@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/label';
 const packages = [
   {
     name: 'Consulta Express',
-    price: '$70',
+    price: '$60',
     description: 'Para dudas puntuales y orientación rápida.',
     features: [
       'Videollamada de 30 minutos',
