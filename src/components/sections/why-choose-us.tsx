@@ -37,7 +37,7 @@ export default function WhyChooseUs() {
                 <CardTitle className="mt-4 text-2xl font-bold font-headline">{feature.title}</CardTitle>
               </CardHeader>
               <CardContent className="p-0">
-                <p className="text-muted-foreground">{feature.description}</p>
+                <p className="text-foreground/90">{feature.description}</p>
               </CardContent>
             </Card>
           ))}

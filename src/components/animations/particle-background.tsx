@@ -13,7 +13,7 @@ const ParticleBackground = () => {
     if (!ctx) return;
 
     let particles: any[] = [];
-    const particleCount = 50;
+    const particleCount = 35; // Reduced particle count for performance
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -31,17 +31,14 @@ const ParticleBackground = () => {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = Math.random() * 0.4 - 0.2;
-        this.speedY = Math.random() * 0.4 - 0.2;
-        // Use a color that works with the new light theme
-        this.color = `hsla(221, 44%, 19%, ${Math.random() * 0.2 + 0.1})`;
+        this.size = Math.random() * 1.5 + 1; // Slightly smaller max size
+        this.speedX = Math.random() * 0.3 - 0.15; // Slower speed
+        this.speedY = Math.random() * 0.3 - 0.15;
+        this.color = `hsla(221, 44%, 19%, ${Math.random() * 0.2 + 0.05})`; // Lower opacity
       }
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
-
-        if (this.size > 0.2) this.size -= 0.01;
 
         if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
         if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
@@ -62,6 +59,7 @@ const ParticleBackground = () => {
       }
     };
 
+    let animationFrameId: number;
     const animate = () => {
       if (!ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -69,20 +67,23 @@ const ParticleBackground = () => {
         particles[i].update();
         particles[i].draw();
       }
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
     };
 
     resizeCanvas();
     init();
     animate();
 
-    window.addEventListener('resize', () => {
+    const handleResize = () => {
       resizeCanvas();
       init();
-    });
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 

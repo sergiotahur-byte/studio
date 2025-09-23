@@ -47,7 +47,8 @@ export default function Header() {
                   alt="Recuperaciones Jurídicas Logo"
                   width={192}
                   height={192}
-                  className="h-16 w-16 sm:h-20 sm:w-20 object-contain"
+                  className="h-12 w-12 sm:h-16 sm:w-16 object-contain"
+                  priority
                 />
               <span className="hidden sm:inline text-lg">Recuperaciones Jurídicas</span>
             </Link>

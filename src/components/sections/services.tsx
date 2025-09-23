@@ -37,7 +37,7 @@ export default function Services() {
                 <CardTitle className="mt-4 text-2xl font-bold font-headline">{service.title}</CardTitle>
               </CardHeader>
               <CardContent className="p-0">
-                <p className="text-muted-foreground">{service.description}</p>
+                <p className="text-foreground/90">{service.description}</p>
               </CardContent>
             </Card>
           ))}
