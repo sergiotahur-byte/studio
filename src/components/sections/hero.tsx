@@ -10,7 +10,7 @@ export default function Hero() {
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-foreground tracking-tighter mb-6 font-headline leading-tight">
             Defendemos su Propiedad. Recuperamos su Tranquilidad.
           </h1>
-          <p className="max-w-2xl mx-auto text-lg lg:text-xl text-foreground/80 mb-10">
+          <p className="max-w-2xl mx-auto text-lg lg:text-xl text-foreground/90 mb-10">
             Expertos en recuperación de inmuebles y defensa de propietarios en Colombia. Analice su contrato de arriendo con nuestra IA y obtenga una consulta legal especializada.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

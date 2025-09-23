@@ -103,7 +103,7 @@ const ContractReviewPackage = () => {
           {features.map((feature) => (
             <li key={feature} className="flex items-start">
               <Check className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
-              <span className="text-foreground/80">{feature}</span>
+              <span className="text-foreground/90">{feature}</span>
             </li>
           ))}
         </ul>
@@ -191,7 +191,7 @@ const CustomContractPackage = () => {
           {features.map((feature) => (
             <li key={feature} className="flex items-start">
               <Check className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
-              <span className="text-foreground/80">{feature}</span>
+              <span className="text-foreground/90">{feature}</span>
             </li>
           ))}
           <li className="flex items-start">
@@ -216,7 +216,7 @@ export default function ConsultationPackages() {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Paquetes de Servicios</h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/90">
             Elija la consulta que mejor se adapte a sus necesidades para obtener asesoramiento legal experto.
           </p>
         </div>
@@ -246,7 +246,7 @@ export default function ConsultationPackages() {
                   {pkg.features.map((feature) => (
                     <li key={feature} className="flex items-start">
                       <Check className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
-                      <span className="text-foreground/80">{feature}</span>
+                      <span className="text-foreground/90">{feature}</span>
                     </li>
                   ))}
                 </ul>

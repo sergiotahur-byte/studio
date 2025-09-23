@@ -38,7 +38,7 @@ export default function Testimonials() {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Casos de Éxito</h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/90">
             Descubra cómo hemos ayudado a otros propietarios a proteger su inversión y tranquilidad.
           </p>
         </div>

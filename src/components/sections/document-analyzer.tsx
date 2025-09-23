@@ -83,7 +83,7 @@ export default function DocumentAnalyzer() {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Analice su Contrato con IA</h2>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-foreground/80">
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-foreground/90">
             Suba su contrato de arriendo (PDF o imagen) y nuestra IA identificará cláusulas potencialmente abusivas o injustas, dándole claridad y poder de negociación.
           </p>
         </div>
@@ -96,7 +96,7 @@ export default function DocumentAnalyzer() {
           <CardContent className="p-0 mt-8">
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-2">
-                <Label htmlFor="lease-document" className="text-foreground/80">Documento de Arrendamiento</Label>
+                <Label htmlFor="lease-document" className="text-foreground">Documento de Arrendamiento</Label>
                 <div className="flex flex-col sm:flex-row gap-4 items-center">
                   <Input id="lease-document" type="file" accept=".pdf,.png,.jpg,.jpeg" onChange={handleFileChange} className="flex-grow" />
                   <Button onClick={handleAnalyze} disabled={isLoading || !file} className="w-full sm:w-auto bg-primary hover:bg-primary/90">
@@ -139,7 +139,7 @@ export default function DocumentAnalyzer() {
                     <CardTitle>Resumen del Contrato</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-foreground/80">{analysisResult.summary}</p>
+                    <p className="text-foreground/90">{analysisResult.summary}</p>
                   </CardContent>
                 </Card>
 

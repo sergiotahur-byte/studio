@@ -25,7 +25,7 @@ export default function WhyChooseUs() {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">¿Por Qué Elegirnos?</h2>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-foreground/80">
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-foreground/90">
             En Recuperaciones Jurídicas nos comprometemos a proteger tus derechos como propietario con un enfoque legal claro y eficiente. Nuestro equipo de expertos combina experiencia y tecnología para ofrecerte soluciones rápidas y seguras en recuperación de inmuebles y manejo de contratos.
           </p>
         </div>

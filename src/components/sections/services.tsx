@@ -25,7 +25,7 @@ export default function Services() {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Nuestros Servicios Jurídicos</h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/90">
             Soluciones legales a la medida de los propietarios para proteger su patrimonio en Colombia.
           </p>
         </div>

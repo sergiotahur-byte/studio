@@ -6,7 +6,7 @@ export default function Trust() {
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-extrabold text-foreground font-headline mb-4 mt-8">Confianza y Respaldo Legal</h2>
-            <p className="text-lg text-foreground/80 mb-6">
+            <p className="text-lg text-foreground/90 mb-6">
                 Ejercemos bajo la normatividad legal colombiana vigente. Nuestros servicios están respaldados por profesionales en derecho con experiencia comprobada, garantizando el manejo ético y confidencial de toda su información bajo secreto profesional.
             </p>
             <div className="flex justify-center flex-wrap gap-4">

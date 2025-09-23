@@ -40,7 +40,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               </Link>
             </Button>
             <h1 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline mb-6">{post.title}</h1>
-            <div className="prose prose-lg max-w-none text-foreground/80 whitespace-pre-wrap">
+            <div className="prose prose-lg max-w-none text-foreground/90 whitespace-pre-wrap">
               {content}
             </div>
           </div>

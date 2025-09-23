@@ -25,7 +25,7 @@ export default function Faq() {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline">Preguntas Frecuentes</h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/90">
             Resolvemos algunas de las dudas más comunes de los propietarios.
           </p>
         </div>
