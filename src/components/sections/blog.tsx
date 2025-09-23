@@ -2,24 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-
-const blogPosts = [
-  {
-    title: '¿Qué hacer si el inquilino no paga?',
-    description: 'Una guía paso a paso sobre las acciones legales y extrajudiciales que puedes tomar para resolver la situación de mora.',
-    href: '#contacto',
-  },
-  {
-    title: 'Claves para recuperar tu inmueble sin complicaciones',
-    description: 'Descubre las estrategias más efectivas y los errores comunes a evitar durante un proceso de restitución de inmueble.',
-    href: '#contacto',
-  },
-  {
-    title: 'Cómo protegerte legalmente antes de arrendar',
-    description: 'La prevención es clave. Conoce las cláusulas indispensables en tu contrato y qué documentos solicitar para minimizar riesgos.',
-    href: '#contacto',
-  },
-];
+import { blogPosts } from '@/lib/blog-posts';
 
 export default function Blog() {
   return (
@@ -42,7 +25,7 @@ export default function Blog() {
               </CardContent>
               <CardFooter>
                  <Button variant="link" asChild className="p-0 text-accent">
-                    <Link href={post.href}>
+                    <Link href={`/blog/${post.slug}`}>
                       Leer más <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                 </Button>
