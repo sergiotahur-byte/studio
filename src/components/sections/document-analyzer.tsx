@@ -104,6 +104,11 @@ export default function DocumentAnalyzer() {
                     Analizar Ahora
                   </Button>
                 </div>
+                 <div className="text-xs text-muted-foreground mt-2 text-center sm:text-left">
+                  <p>
+                    <b>Tu privacidad es importante.</b> Los documentos se procesan de forma segura y no se almacenan después del análisis.
+                  </p>
+                </div>
                 {file && <p className="text-sm text-muted-foreground mt-2">Archivo seleccionado: {file.name}</p>}
               </div>
             </div>
