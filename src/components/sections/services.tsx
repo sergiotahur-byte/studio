@@ -10,7 +10,7 @@ const services = [
   {
     icon: <ShieldCheck className="h-10 w-10 text-accent" />,
     title: 'Defensa del Arrendador',
-    description: 'Lo defendemos ante cualquier disputa legal, protegiendo sus derechos como propietario y asegurando el cumplimiento del contrato.',
+    description: 'Lo defendemos ante cualquier disputa legal, protegiendo sus derechos como propietario y asegurando el cumplimiento del contrato para su tranquilidad.',
   },
   {
     icon: <Gavel className="h-10 w-10 text-accent" />,
