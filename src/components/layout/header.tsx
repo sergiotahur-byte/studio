@@ -47,7 +47,7 @@ export default function Header() {
                   alt="Recuperaciones Jurídicas Logo"
                   width={192}
                   height={192}
-                  className="h-24 w-24 object-contain"
+                  className="h-16 w-16 sm:h-20 sm:w-20 object-contain"
                 />
               <span className="hidden sm:inline text-lg">Recuperaciones Jurídicas</span>
             </Link>
@@ -55,7 +55,7 @@ export default function Header() {
           <nav className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <Button key={link.name} variant="ghost" asChild>
-                <Link href={link.href} className="text-foreground/80 hover:text-foreground text-sm">
+                <Link href={link.href} className="text-foreground/90 hover:text-foreground text-sm">
                   {link.name}
                 </Link>
               </Button>
@@ -89,7 +89,7 @@ export default function Header() {
                     <Link
                       key={link.name}
                       href={link.href}
-                      className="text-lg text-foreground/80 hover:text-foreground"
+                      className="text-lg text-foreground/90 hover:text-foreground"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {link.name}

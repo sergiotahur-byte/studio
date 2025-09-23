@@ -72,7 +72,7 @@ const ContractReviewPackage = () => {
     >
       <CardHeader className="p-8">
         <CardTitle className="text-2xl font-bold font-headline">Revisión de Contrato</CardTitle>
-        <CardDescription className="text-muted-foreground">Garantiza la legalidad y equidad de tu contrato, ya sea residencial o comercial.</CardDescription>
+        <CardDescription className="text-foreground/90">Garantiza la legalidad y equidad de tu contrato, ya sea residencial o comercial.</CardDescription>
         <div className="mt-4">
           <span className="text-5xl font-extrabold">{selectedOption.price}</span>
           <span className="text-muted-foreground"> USD</span>
@@ -155,7 +155,7 @@ const CustomContractPackage = () => {
     >
       <CardHeader className="p-8">
         <CardTitle className="text-2xl font-bold font-headline">Elaboración de Contrato Personalizado</CardTitle>
-        <CardDescription className="text-muted-foreground">
+        <CardDescription className="text-foreground/90">
           {contractType === 'comercial' 
             ? 'El precio puede escalar hasta $300, dependiendo de la complejidad (multisede, cláusulas especiales, garantías elevadas).' 
             : 'Un contrato a la medida para tu tranquilidad.'}
@@ -220,12 +220,12 @@ export default function ConsultationPackages() {
             Elija la consulta que mejor se adapte a sus necesidades para obtener asesoramiento legal experto.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
           {packages.map((pkg) => (
             <Card
               key={pkg.name}
               className={`flex flex-col bg-card rounded-xl shadow-lg transition-transform duration-300 ${
-                pkg.isPopular ? 'border-accent shadow-accent/20 md:scale-105' : 'hover:-translate-y-2'
+                pkg.isPopular ? 'border-accent shadow-accent/20 lg:scale-105' : 'hover:-translate-y-2'
               }`}
             >
               {pkg.isPopular && (
@@ -235,7 +235,7 @@ export default function ConsultationPackages() {
               )}
               <CardHeader className="p-8">
                 <CardTitle className="text-2xl font-bold font-headline">{pkg.name}</CardTitle>
-                <CardDescription className="text-muted-foreground">{pkg.description}</CardDescription>
+                <CardDescription className="text-foreground/90">{pkg.description}</CardDescription>
                 <div className="mt-4">
                   <span className="text-5xl font-extrabold">{pkg.price}</span>
                   <span className="text-muted-foreground"> USD</span>
