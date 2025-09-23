@@ -46,7 +46,7 @@ export default async function Blog() {
                 <CardDescription className="text-foreground/80">{post.summary}</CardDescription>
               </CardContent>
               <CardFooter>
-                 <Button variant="link" asChild className="p-0 text-accent">
+                 <Button variant="link" asChild className="p-0">
                     <Link href={`/blog/${post.slug}`}>
                       Leer más <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
