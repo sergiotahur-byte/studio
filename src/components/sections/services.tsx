@@ -5,7 +5,7 @@ const services = [
   {
     icon: <Home className="h-10 w-10 text-accent" />,
     title: 'Recuperación de Inmuebles',
-    description: 'Gestionamos el proceso de restitución de inmueble arrendado para recuperar su inmueble de arrendatarios morosos o incumplidos de forma rápida y eficiente.',
+    description: 'Gestionamos rápida y eficientemente la restitución de inmuebles arrendados, recuperando tu propiedad frente a arrendatarios morosos o incumplidos.',
   },
   {
     icon: <ShieldCheck className="h-10 w-10 text-accent" />,
