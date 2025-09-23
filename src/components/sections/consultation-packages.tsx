@@ -22,7 +22,7 @@ const packages = [
     ],
     isPopular: false,
     cta: 'Pagar Ahora',
-    paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
+    paymentLink: 'https://checkout.wompi.co/l/test_VPOS_z8iL5C',
   },
   {
     name: 'Consulta Estratégica',
