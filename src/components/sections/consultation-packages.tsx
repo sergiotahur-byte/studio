@@ -126,19 +126,28 @@ const CustomContractPackage = () => {
       paymentLink: 'https://checkout.wompi.co/l/test_VPOS_xxxxxx', // Replace with actual link
     },
     comercial: {
-      price: '$80',
-      paymentLink: 'https://checkout.wompi.co/l/test_VPOS_yyyyyy', // Replace with actual link
+      price: '$150',
+      paymentLink: 'https://checkout.wompi.co/l/test_VPOS_zzzzzz', // Replace with actual link
     },
   };
   
   const selectedOption = contractType === 'comercial' ? creationOptions.comercial : creationOptions.residencial;
 
-  const features = [
-    'Contrato a la medida (residencial o comercial)',
+  const residencialFeatures = [
+    'Contrato a la medida residencial',
     'Asesoría legal básica sobre derechos y deberes',
     'Revisión de documentos del arrendatario/propietario',
     'Entrega en PDF listo para firmar',
   ];
+
+  const comercialFeatures = [
+    'Redacción completa y adaptada a la necesidad del cliente.',
+    'Asesoría legal especializada en temas comerciales y cláusulas especiales.',
+    'Revisión de documentos asociados (garantías, fiadores, anexos).',
+    'Entrega en PDF listo para firmar.',
+  ];
+
+  const features = contractType === 'comercial' ? comercialFeatures : residencialFeatures;
 
   return (
     <Card
@@ -146,7 +155,11 @@ const CustomContractPackage = () => {
     >
       <CardHeader className="p-8">
         <CardTitle className="text-2xl font-bold font-headline">Elaboración de Contrato Personalizado</CardTitle>
-        <CardDescription className="text-muted-foreground">Un contrato a la medida para tu tranquilidad.</CardDescription>
+        <CardDescription className="text-muted-foreground">
+          {contractType === 'comercial' 
+            ? 'El precio puede escalar hasta $300, dependiendo de la complejidad (multisede, cláusulas especiales, garantías elevadas).' 
+            : 'Un contrato a la medida para tu tranquilidad.'}
+        </CardDescription>
         <div className="mt-4">
           <span className="text-muted-foreground text-sm">Desde</span>
           <span className="text-5xl font-extrabold ml-2">{selectedOption.price}</span>
