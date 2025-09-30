@@ -26,10 +26,10 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 
   const { name, email, message } = validatedFields.data;
 
-  // ¡Importante! Asegúrate de que las variables de entorno están cargadas.
-  // En Next.js con App Router, esto suele manejarse automáticamente.
+  // Las variables de entorno para el correo se cargan de forma segura en producción.
+  // La variable EMAIL_PASS debe configurarse como un secreto en Google Secret Manager.
   if (!process.env.EMAIL_HOST || !process.env.EMAIL_PORT || !process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.error('Faltan variables de entorno para el envío de correo.');
+    console.error('Faltan variables de entorno para el envío de correo. Asegúrese de que EMAIL_HOST, EMAIL_PORT, EMAIL_USER y el secreto EMAIL_PASS estén configurados.');
     return { message: 'Error del servidor: la configuración de correo está incompleta. Por favor, contacte al administrador.', errors: {} };
   }
 
@@ -37,18 +37,18 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
       port: Number(process.env.EMAIL_PORT),
-      secure: true, // Use true for port 465 (SSL)
+      secure: true, // Usar true para el puerto 465 (SSL/TLS)
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        pass: process.env.EMAIL_PASS, // Esta variable se carga de forma segura desde Secret Manager
       },
     });
 
     await transporter.sendMail({
-      from: `"${name}" <${process.env.EMAIL_USER}>`, // El remitente será 'servicio@recuperacionesjuridicas.lat'
+      from: `"${name}" <${process.env.EMAIL_USER}>`,
       to: 'recuprolex@gmail.com', // El correo de destino
-      replyTo: email, // Para que puedas responder directamente al cliente
-      subject: 'Nuevo Mensaje de Contacto desde la Web', // Subject line
+      replyTo: email,
+      subject: 'Nuevo Mensaje de Contacto desde la Web',
       html: `
         <h1>Nuevo Mensaje de Contacto</h1>
         <p><strong>Nombre:</strong> ${name}</p>
@@ -61,6 +61,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     return { message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.', errors: {} };
   } catch (e) {
     console.error('Error al enviar el correo:', e);
+    // No exponer detalles del error al cliente por seguridad.
     return { message: 'Ocurrió un error al enviar el formulario. Por favor, inténtelo de nuevo más tarde.', errors: {} };
   }
 }
