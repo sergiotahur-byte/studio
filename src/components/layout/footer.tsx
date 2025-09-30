@@ -18,8 +18,8 @@ export default function Footer() {
           </div>
           <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Recuperaciones Jurídicas. Todos los derechos reservados.</p>
           <div className="flex space-x-4">
-            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">Política de Privacidad</Link>
-            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">Términos de Servicio</Link>
+            <Link href="/politica-de-privacidad" className="text-sm text-muted-foreground hover:text-foreground">Política de Privacidad</Link>
+            <Link href="/terminos-de-servicio" className="text-sm text-muted-foreground hover:text-foreground">Términos de Servicio</Link>
           </div>
         </div>
       </div>
