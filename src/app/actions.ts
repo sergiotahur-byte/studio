@@ -26,10 +26,10 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 
   const { name, email, message } = validatedFields.data;
 
-  // Las variables de entorno para el correo se cargan de forma segura en producción.
-  // La variable EMAIL_PASS debe configurarse como un secreto en Google Secret Manager.
+  // Las variables de entorno para el correo se cargan de forma segura.
+  // La variable EMAIL_PASS debe configurarse en el archivo .env.
   if (!process.env.EMAIL_HOST || !process.env.EMAIL_PORT || !process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.error('Faltan variables de entorno para el envío de correo. Asegúrese de que EMAIL_HOST, EMAIL_PORT, EMAIL_USER y el secreto EMAIL_PASS estén configurados.');
+    console.error('Faltan variables de entorno para el envío de correo. Asegúrese de que EMAIL_HOST, EMAIL_PORT, EMAIL_USER y EMAIL_PASS estén configurados en su archivo .env.');
     return { message: 'Error del servidor: la configuración de correo está incompleta. Por favor, contacte al administrador.', errors: {} };
   }
 
@@ -40,7 +40,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
       secure: true, // Usar true para el puerto 465 (SSL/TLS)
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS, // Esta variable se carga de forma segura desde Secret Manager
+        pass: process.env.EMAIL_PASS, // Esta variable se carga desde el archivo .env
       },
     });
 
