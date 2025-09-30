@@ -26,6 +26,13 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 
   const { name, email, message } = validatedFields.data;
 
+  // ¡Importante! Asegúrate de que las variables de entorno están cargadas.
+  // En Next.js con App Router, esto suele manejarse automáticamente.
+  if (!process.env.EMAIL_HOST || !process.env.EMAIL_PORT || !process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    console.error('Faltan variables de entorno para el envío de correo.');
+    return { message: 'Error del servidor: la configuración de correo está incompleta. Por favor, contacte al administrador.', errors: {} };
+  }
+
   try {
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
@@ -38,9 +45,9 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     });
 
     await transporter.sendMail({
-      from: `"${name}" <${process.env.EMAIL_USER}>`, // sender address
-      to: 'servicio@recuperacionesjuridicas.lat', // list of receivers
-      replyTo: email,
+      from: `"${name}" <${process.env.EMAIL_USER}>`, // El remitente será 'servicio@recuperacionesjuridicas.lat'
+      to: 'recuprolex@gmail.com', // El correo de destino
+      replyTo: email, // Para que puedas responder directamente al cliente
       subject: 'Nuevo Mensaje de Contacto desde la Web', // Subject line
       html: `
         <h1>Nuevo Mensaje de Contacto</h1>
@@ -53,8 +60,8 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     
     return { message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.', errors: {} };
   } catch (e) {
-    console.error(e);
-    return { message: 'Ocurrió un error al enviar el formulario. Por favor, inténtelo de nuevo.', errors: {} };
+    console.error('Error al enviar el correo:', e);
+    return { message: 'Ocurrió un error al enviar el formulario. Por favor, inténtelo de nuevo más tarde.', errors: {} };
   }
 }
 
