@@ -123,7 +123,7 @@ const CustomContractPackage = () => {
   const creationOptions = {
     residencial: {
       price: '$50',
-      paymentLink: 'https://checkout.wompi.co/l/test_VPOS_FNYa9d', 
+      paymentLink: 'https://checkout.wompi.co/l/5Uq8E8', 
     },
     comercial: {
       price: '$150',
