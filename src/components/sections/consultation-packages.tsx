@@ -127,7 +127,7 @@ const CustomContractPackage = () => {
     },
     comercial: {
       price: '$150',
-      paymentLink: 'https://checkout.wompi.co/l/test_VPOS_BoCjF7',
+      paymentLink: 'https://checkout.wompi.co/l/ANdloM',
     },
   };
   
