@@ -38,7 +38,7 @@ const packages = [
     ],
     isPopular: true,
     cta: 'Pagar Ahora',
-    paymentLink: 'https://checkout.wompi.co/l/test_VPOS_cmGG06',
+    paymentLink: 'https://checkout.wompi.co/l/GDIZlG',
   },
 ];
 
