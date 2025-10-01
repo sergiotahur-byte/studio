@@ -3,29 +3,17 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { blogPosts } from '@/lib/blog-posts';
-import fs from 'fs';
-import path from 'path';
 
-async function getPostSummary(contentPath: string): Promise<string> {
-  try {
-    const fullPath = path.join(process.cwd(), contentPath);
-    const content = await fs.promises.readFile(fullPath, 'utf8');
-    // Extract the first paragraph. Assumes paragraphs are separated by a blank line.
-    return content.split('\n\n')[0] || 'Haz clic para leer más.';
-  } catch (error) {
-    console.error(`Error reading blog post summary from ${contentPath}:`, error);
-    return "No se pudo cargar la descripción.";
-  }
+function getPostSummary(content: string): string {
+  // Extract the first paragraph. Assumes paragraphs are separated by a blank line.
+  return content.trim().split('\n\n')[0] || 'Haz clic para leer más.';
 }
 
-
 export default async function Blog() {
-  const postsWithSummary = await Promise.all(
-    blogPosts.map(async (post) => ({
-      ...post,
-      summary: await getPostSummary(post.contentPath),
-    }))
-  );
+  const postsWithSummary = blogPosts.map((post) => ({
+    ...post,
+    summary: getPostSummary(post.content),
+  }));
 
   return (
     <section id="blog" className="section-padding bg-secondary">

@@ -5,18 +5,6 @@ import Footer from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import fs from 'fs';
-import path from 'path';
-
-async function getPostContent(contentPath: string): Promise<string> {
-  try {
-    const fullPath = path.join(process.cwd(), contentPath);
-    return await fs.promises.readFile(fullPath, 'utf8');
-  } catch (error) {
-    console.error(`Error reading blog post from ${contentPath}:`, error);
-    return "El contenido de este artículo no se ha podido cargar.";
-  }
-}
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = blogPosts.find((p) => p.slug === params.slug);
@@ -24,8 +12,6 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   if (!post) {
     notFound();
   }
-
-  const content = await getPostContent(post.contentPath);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -41,7 +27,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             </Button>
             <h1 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline mb-6">{post.title}</h1>
             <div className="prose prose-lg max-w-none text-foreground/90 whitespace-pre-wrap">
-              {content}
+              {post.content}
             </div>
           </div>
         </div>
