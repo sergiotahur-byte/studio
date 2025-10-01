@@ -29,7 +29,7 @@ const packages = [
     price: '$125',
     description: 'Análisis profundo y plan de acción detallado.',
     features: [
-      'Videollamada de 60 minutos',
+      'Llamada de 60 minutos',
       'Análisis de los documentos asociados al arrendamiento',
       'Propuesta de estrategia legal',
       'Resolución de hasta 3 dudas',
