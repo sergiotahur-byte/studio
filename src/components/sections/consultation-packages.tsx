@@ -13,7 +13,7 @@ const packages = [
     price: '$60',
     description: 'Para dudas puntuales y orientación rápida.',
     features: [
-      'Videollamada de 30 minutos',
+      'Llamada de 30 minutos',
       'Evaluación inicial del caso',
       'Análisis verbal preliminar',
       'Revisión del contrato de arrendamiento y sus anexos',
@@ -181,7 +181,8 @@ const CustomContractPackage = () => {
             <RadioGroupItem value="comercial" id="creation-comercial" className="peer sr-only" />
             <Label
               htmlFor="creation-comercial"
-              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p
+-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
             >
               Comercial / Especial
             </Label>
