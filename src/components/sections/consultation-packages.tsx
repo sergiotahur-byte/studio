@@ -52,7 +52,7 @@ const ContractReviewPackage = () => {
     },
     comercial: {
       price: '$75',
-      paymentLink: 'https://checkout.wompi.co/l/test_VPOS_BoCjF7',
+      paymentLink: 'https://checkout.wompi.co/l/9lVlVf',
     },
   };
 
