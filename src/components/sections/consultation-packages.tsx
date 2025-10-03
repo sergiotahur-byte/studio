@@ -240,7 +240,7 @@ export default function ConsultationPackages() {
                   <span className="text-5xl font-extrabold">{pkg.price}</span>
                   <span className="text-muted-foreground"> USD</span>
                 </div>
-              </CardHeader>
+              </cardheader>
               <CardContent className="p-8 pt-0 flex-grow">
                 <ul className="space-y-3">
                   {pkg.features.map((feature) => (
