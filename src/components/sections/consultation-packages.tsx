@@ -115,7 +115,7 @@ const ContractReviewPackage = () => {
       </CardFooter>
     </Card>
   );
-}
+};
 
 const CustomContractPackage = () => {
   const [contractType, setContractType] = useState('residencial');
