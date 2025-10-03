@@ -208,7 +208,7 @@ const CustomContractPackage = () => {
       </CardFooter>
     </Card>
   );
-}
+};
 
 export default function ConsultationPackages() {
   return (
