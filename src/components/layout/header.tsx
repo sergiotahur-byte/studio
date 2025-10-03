@@ -74,7 +74,7 @@ export default function Header() {
                   <span className="sr-only">Abrir menú</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left">
+              <SheetContent side="left" className="w-[300px] sm:w-[400px]">
                 <div className="flex flex-col space-y-4 p-6">
                    <Link href="/" className="flex items-center gap-3 text-xl font-bold text-foreground mb-4" onClick={() => setIsMobileMenuOpen(false)}>
                       <Image
