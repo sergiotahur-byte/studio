@@ -78,7 +78,7 @@ export default function Header() {
                 <div className="flex flex-col space-y-4 p-6">
                    <Link href="/" className="flex items-center gap-3 text-xl font-bold text-foreground mb-4" onClick={() => setIsMobileMenuOpen(false)}>
                       <Image
-                          src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.firebasestorage.app/o/logo.png1.jpg?alt=media&token=bc9760bf-8837-4b16-b1ce-714472abec2a"
+                          src="https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.firebasestorage.app/o/logo.png1.jpg?alt=media&token=bc9760bf-8837-4b1ce-714472abec2a"
                           alt="Recuperaciones Jurídicas Logo"
                           width={64}
                           height={64}
