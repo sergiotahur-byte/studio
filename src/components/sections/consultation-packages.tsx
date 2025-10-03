@@ -210,7 +210,6 @@ const CustomContractPackage = () => {
   );
 }
 
-
 export default function ConsultationPackages() {
   return (
     <section id="consultas" className="section-padding bg-secondary">
