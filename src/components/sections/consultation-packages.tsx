@@ -178,7 +178,7 @@ const CustomContractPackage = () => {
             </Label>
           </div>
           <div>
-            <RadioGroupItem value="comercial" id="creation-comercial" className="peer sr-only" />
+            <RadioGroupItem value="comercial" id="creation-comercial" className="peer sr_only" />
             <Label
               htmlFor="creation-comercial"
               className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
