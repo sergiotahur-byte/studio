@@ -84,7 +84,7 @@ const ContractReviewPackage = () => {
             <RadioGroupItem value="residencial" id="review-residencial" className="peer sr-only" />
             <Label
               htmlFor="review-residencial"
-              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
             >
               Residencial
             </Label>
@@ -93,7 +93,7 @@ const ContractReviewPackage = () => {
             <RadioGroupItem value="comercial" id="review-comercial" className="peer sr-only" />
             <Label
               htmlFor="review-comercial"
-              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
             >
               Comercial
             </Label>
@@ -172,7 +172,7 @@ const CustomContractPackage = () => {
             <RadioGroupItem value="residencial" id="creation-residencial" className="peer sr-only" />
             <Label
               htmlFor="creation-residencial"
-              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
             >
               Residencial Básico
             </Label>
@@ -181,7 +181,7 @@ const CustomContractPackage = () => {
             <RadioGroupItem value="comercial" id="creation-comercial" className="peer sr-only" />
             <Label
               htmlFor="creation-comercial"
-              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+              className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
             >
               Comercial / Especial
             </Label>
