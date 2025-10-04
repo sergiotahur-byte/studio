@@ -16,8 +16,10 @@ const ParticleBackground = () => {
     const particleCount = 35; // Reduced particle count for performance
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      if (canvas) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
     };
 
     class Particle {
@@ -29,14 +31,15 @@ const ParticleBackground = () => {
       color: string;
 
       constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        this.x = Math.random() * (canvas?.width || 0);
+        this.y = Math.random() * (canvas?.height || 0);
         this.size = Math.random() * 1.5 + 1; // Slightly smaller max size
         this.speedX = Math.random() * 0.3 - 0.15; // Slower speed
         this.speedY = Math.random() * 0.3 - 0.15;
         this.color = `hsla(221, 44%, 19%, ${Math.random() * 0.2 + 0.05})`; // Lower opacity
       }
       update() {
+        if (!canvas) return;
         this.x += this.speedX;
         this.y += this.speedY;
 
@@ -61,7 +64,7 @@ const ParticleBackground = () => {
 
     let animationFrameId: number;
     const animate = () => {
-      if (!ctx) return;
+      if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (let i = 0; i < particles.length; i++) {
         particles[i].update();
@@ -69,7 +72,7 @@ const ParticleBackground = () => {
       }
       animationFrameId = requestAnimationFrame(animate);
     };
-
+    
     resizeCanvas();
     init();
     animate();
