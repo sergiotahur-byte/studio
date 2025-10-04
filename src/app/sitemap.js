@@ -1,4 +1,4 @@
-import { blogPosts } from '@/lib/blog-posts';
+const { blogPosts } = require('@/lib/blog-posts');
 
 export default function sitemap() {
   const siteUrl = 'https://www.recuperacionesjuridicas.lat';
