@@ -9,7 +9,7 @@ function getPostSummary(content: string): string {
   return content.trim().split('\n\n')[0] || 'Haz clic para leer más.';
 }
 
-export default async function Blog() {
+export default function Blog() {
   const postsWithSummary = blogPosts.map((post) => ({
     ...post,
     summary: getPostSummary(post.content),
