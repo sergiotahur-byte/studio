@@ -6,7 +6,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes = [
     '',
-    '/gracias',
     '/politica-de-privacidad',
     '/terminos-de-servicio',
   ].map((route) => ({
