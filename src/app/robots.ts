@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/gracias'], // No es necesario indexar la página de agradecimiento
+      disallow: '/gracias', // No es necesario indexar la página de agradecimiento
     },
     sitemap: 'https://www.recuperacionesjuridicas.lat/sitemap.xml',
   };
