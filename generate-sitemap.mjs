@@ -1,58 +1,50 @@
-
+// generate-sitemap.mjs
 import fs from 'fs';
-import { blogPosts } from './src/lib/blog-posts.ts';
+import path from 'path';
 
-const siteUrl = 'https://www.recuperacionesjuridicas.lat';
+// Import blog posts using a dynamic import because this is an ES Module
+const { blogPosts } = await import('./src/lib/blog-posts.ts');
 
-function generateSitemap() {
-  const mainRoutes = [
-    {
-      url: `${siteUrl}/`,
-      lastModified: new Date().toISOString(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: `${siteUrl}/politica-de-privacidad`,
-      lastModified: new Date().toISOString(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${siteUrl}/terminos-de-servicio`,
-      lastModified: new Date().toISOString(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
+const baseUrl = 'https://www.recuperacionesjuridicas.lat';
+
+async function generateSitemap() {
+  const staticPages = [
+    '',
+    '/politica-de-privacidad',
+    '/terminos-de-servicio',
+    '/gracias',
   ];
 
-  const blogPages = blogPosts.map((post) => ({
-    url: `${siteUrl}/blog/${post.slug}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: 'weekly',
-    priority: 0.9,
-  }));
+  const staticUrls = staticPages.map(page => {
+    return `
+      <url>
+        <loc>${baseUrl}${page}</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>${page === '' ? '1.0' : '0.7'}</priority>
+      </url>
+    `;
+  });
 
-  const allRoutes = [...mainRoutes, ...blogPages];
+  const blogUrls = blogPosts.map(post => {
+    return `
+      <url>
+        <loc>${baseUrl}/blog/${post.slug}</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
+    `;
+  });
 
-  const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${allRoutes
-    .map(
-      (route) => `
-    <url>
-      <loc>${route.url}</loc>
-      <lastmod>${route.lastModified}</lastmod>
-      <changefreq>${route.changeFrequency}</changefreq>
-      <priority>${route.priority}</priority>
-    </url>
-  `
-    )
-    .join('')}
+  ${staticUrls.join('')}
+  ${blogUrls.join('')}
 </urlset>`;
 
-  fs.writeFileSync('public/sitemap.xml', sitemapContent);
-  console.log('Sitemap generated successfully in public/sitemap.xml');
+  fs.writeFileSync(path.resolve('./public/sitemap.xml'), sitemap, 'utf8');
+  console.log('Sitemap generated successfully!');
 }
 
 generateSitemap();
