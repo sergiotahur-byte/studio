@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
@@ -5,8 +7,8 @@ import Link from 'next/link';
 import { blogPosts } from '@/lib/blog-posts';
 
 function getPostSummary(content: string): string {
-  // Extract the first paragraph. Assumes paragraphs are separated by a blank line.
-  return content.trim().split('\n\n')[0] || 'Haz clic para leer más.';
+  // Extract the first line/paragraph.
+  return content.trim().split('\n')[0] || 'Haz clic para leer más.';
 }
 
 export default function Blog() {
