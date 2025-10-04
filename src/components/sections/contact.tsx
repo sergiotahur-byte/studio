@@ -1,7 +1,6 @@
 'use client';
 
-import { useActionState } from 'react';
-import { useFormStatus } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 import { useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { submitContactForm } from '@/app/actions';
@@ -23,14 +22,14 @@ function SubmitButton() {
 }
 
 export default function Contact() {
-  const initialState = { message: '', errors: {} };
-  const [state, dispatch] = useActionState(submitContactForm, initialState);
+  const initialState = { message: null, errors: null };
+  const [state, dispatch] = useFormState(submitContactForm, initialState);
   const { toast } = useToast();
 
   useEffect(() => {
     if (state.message) {
-      if (Object.keys(state.errors).length > 0) {
-        // Don't show toast for validation errors on load
+      if (state.errors && Object.keys(state.errors).length > 0) {
+        // Don't show toast for validation errors on load or failed submission
       } else {
         toast({
           title: 'Formulario Enviado',
@@ -73,6 +72,9 @@ export default function Contact() {
                 {state.errors?.message && <p className="text-sm text-destructive">{state.errors.message[0]}</p>}
               </div>
               <SubmitButton />
+               {state.message && state.errors && (
+                <p className="text-sm text-destructive">{state.message}</p>
+              )}
             </form>
           </CardContent>
         </Card>

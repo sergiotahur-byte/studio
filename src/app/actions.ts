@@ -9,9 +9,18 @@ const contactFormSchema = z.object({
   message: z.string().min(10, { message: "El mensaje debe tener al menos 10 caracteres." }),
 });
 
+export type FormState = {
+  message: string | null;
+  errors: {
+    name?: string[];
+    email?: string[];
+    message?: string[];
+  } | null;
+};
+
 // NOTE: Nodemailer was removed as it's not compatible with this serverless environment's build process.
 // For contact forms, a dedicated email service API (like SendGrid, Resend, etc.) or a serverless function is recommended.
-export async function submitContactForm(prevState: any, formData: FormData) {
+export async function submitContactForm(prevState: FormState, formData: FormData): Promise<FormState> {
   const validatedFields = contactFormSchema.safeParse({
     name: formData.get('name'),
     email: formData.get('email'),
@@ -29,7 +38,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 
   // Since the email sending logic is removed, we'll return a success message directly.
   // In a real application, you would replace this with an API call to a transactional email service.
-  return { message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.', errors: {} };
+  return { message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.', errors: null };
 }
 
 export async function analyzeLease(leaseAgreementDataUri: string): Promise<{ success: boolean; data?: AnalyzeLeaseAgreementOutput; error?: string }> {
