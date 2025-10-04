@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -64,6 +65,34 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LegalService',
+  name: 'Recuperaciones Jurídicas',
+  url: 'https://www.recuperacionesjuridicas.lat',
+  logo: 'https://firebasestorage.googleapis.com/v0/b/studio-7962041961-212ab.firebasestorage.app/o/logo.png1.jpg?alt=media&token=bc9760bf-8837-4b16-b1ce-714472abec2a',
+  description: 'Asesoría legal experta en recuperación de inmuebles, defensa de propietarios y contratos de arriendo en Colombia.',
+  telephone: '+573182806162',
+  areaServed: {
+    '@type': 'Country',
+    name: 'Colombia',
+  },
+  potentialAction: {
+    '@type': 'ReserveAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://calendly.com',
+      inLanguage: 'es-CO',
+      actionPlatform: [
+        'http://schema.org/DesktopWebPlatform',
+        'http://schema.org/IOSPlatform',
+        'http://schema.org/AndroidPlatform',
+      ],
+    },
+    name: 'Agendar Consulta',
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -71,6 +100,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-CO">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${inter.variable} font-body antialiased relative`}>
         <ParticleBackground />
         <div className="relative z-10">{children}</div>
