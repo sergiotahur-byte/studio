@@ -1,13 +1,23 @@
-// generate-sitemap.mjs
+
 import fs from 'fs';
 import path from 'path';
 
-// Import blog posts using a dynamic import because this is an ES Module
-const { blogPosts } = await import('./src/lib/blog-posts.ts');
+// Importa las rutas del blog de forma compatible con .mjs
+const blogPostsPath = path.resolve(process.cwd(), 'src/lib/blog-posts.ts');
+const blogPostsContent = fs.readFileSync(blogPostsPath, 'utf-8');
 
-const baseUrl = 'https://www.recuperacionesjuridicas.lat';
+// Extraer los slugs de los blog posts usando una expresión regular
+// Esto evita problemas de importación entre módulos ES y CommonJS
+const blogSlugs = [];
+const slugRegex = /slug:\s*['"]([^'"]+)['"]/g;
+let match;
+while ((match = slugRegex.exec(blogPostsContent)) !== null) {
+  blogSlugs.push(match[1]);
+}
 
-async function generateSitemap() {
+const generateSitemap = async () => {
+  const domain = 'https://www.recuperacionesjuridicas.lat';
+
   const staticPages = [
     '',
     '/politica-de-privacidad',
@@ -15,36 +25,37 @@ async function generateSitemap() {
     '/gracias',
   ];
 
-  const staticUrls = staticPages.map(page => {
-    return `
-      <url>
-        <loc>${baseUrl}${page}</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>${page === '' ? '1.0' : '0.7'}</priority>
-      </url>
-    `;
-  });
+  const blogPages = blogSlugs.map(slug => `/blog/${slug}`);
 
-  const blogUrls = blogPosts.map(post => {
-    return `
-      <url>
-        <loc>${baseUrl}/blog/${post.slug}</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-      </url>
-    `;
-  });
+  const allPages = [...staticPages, ...blogPages];
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  const sitemapContent = `
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${staticUrls.join('')}
-  ${blogUrls.join('')}
-</urlset>`;
+  ${allPages
+    .map(
+      (url) => `
+    <url>
+      <loc>${`${domain}${url}`}</loc>
+      <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>${url === '' ? '1.0' : url.startsWith('/blog/') ? '0.9' : '0.7'}</priority>
+    </url>
+  `
+    )
+    .join('')}
+</urlset>
+  `.trim();
 
-  fs.writeFileSync(path.resolve('./public/sitemap.xml'), sitemap, 'utf8');
-  console.log('Sitemap generated successfully!');
-}
+  try {
+    const publicDir = path.resolve(process.cwd(), 'public');
+    if (!fs.existsSync(publicDir)) {
+      fs.mkdirSync(publicDir);
+    }
+    fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapContent);
+    console.log('sitemap.xml generated successfully!');
+  } catch (error) {
+    console.error('Error generating sitemap:', error);
+  }
+};
 
 generateSitemap();
