@@ -99,7 +99,7 @@ export default function DocumentAnalyzer() {
                 <Label htmlFor="lease-document" className="text-foreground">Documento de Arrendamiento</Label>
                 <div className="flex flex-col sm:flex-row gap-4 items-center">
                   <Input id="lease-document" type="file" accept=".pdf,.png,.jpg,.jpeg" onChange={handleFileChange} className="flex-grow" />
-                  <Button onClick={handleAnalyze} disabled={isLoading || !file} className="w-full sm:w-auto bg-primary hover:bg-primary/90">
+                  <Button onClick={handleAnalyze} disabled={isLoading || !file} className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90">
                     {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <ShieldCheck className="mr-2 h-4 w-4" />}
                     Analizar Ahora
                   </Button>

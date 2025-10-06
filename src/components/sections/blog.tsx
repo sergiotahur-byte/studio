@@ -47,7 +47,7 @@ export default function Blog() {
         </div>
         <div className="text-center mt-16">
           <Button size="lg" asChild>
-            <Link href="#contacto">Ver más artículos</Link>
+            <Link href="#blog">Ver más artículos</Link>
           </Button>
         </div>
       </div>
