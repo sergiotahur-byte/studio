@@ -53,9 +53,8 @@ export async function submitContactForm(prevState: FormState, formData: FormData
     };
   }
   
-  const resend = new Resend(resendApiKey);
-
   try {
+    const resend = new Resend(resendApiKey);
     console.log(`Attempting to send email from ${fromEmail} to ${toEmail}`);
     
     const { data, error } = await resend.emails.send({
