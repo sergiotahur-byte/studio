@@ -44,9 +44,20 @@ export async function submitContactForm(prevState: FormState, formData: FormData
   const fromEmail = 'servicio@recuperacionesjuridicas.lat';
   const toEmail = 'recuprolex@gmail.com';
   
+  if (!resendApiKey) {
+    console.error('CRITICAL: RESEND_API_KEY is not configured.');
+    return {
+        status: 'error',
+        message: 'Error crítico del servidor: La configuración de envío no está completa.',
+        errors: null,
+    };
+  }
+  
   const resend = new Resend(resendApiKey);
 
   try {
+    console.log(`Attempting to send email from ${fromEmail} to ${toEmail}`);
+    
     const { data, error } = await resend.emails.send({
       from: `Contacto Web <${fromEmail}>`,
       to: [toEmail],
@@ -61,23 +72,36 @@ export async function submitContactForm(prevState: FormState, formData: FormData
       `
     });
 
-    if (error || !data) {
+    if (error) {
+      // THIS IS THE CRITICAL LOGGING STEP
       console.error("Resend API Error:", error);
       return {
         status: 'error',
-        message: `Error del servidor: No se pudo enviar el mensaje. ${error?.message || 'Resend no devolvió datos.'}`,
+        message: `Error del servidor al enviar: ${error.message}`,
         errors: null,
       };
     }
+    
+    if (!data) {
+        console.error("Resend API did not return data object.");
+        return {
+            status: 'error',
+            message: 'Error del servidor: La API de Resend no devolvió una respuesta exitosa.',
+            errors: null,
+        };
+    }
 
+    console.log("Email sent successfully with ID:", data.id);
     return {
       status: 'success',
       message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.',
       errors: null,
     };
+
   } catch (exception) {
-    console.error("General Error:", exception);
-    const errorMessage = exception instanceof Error ? exception.message : 'Error inesperado del servidor.';
+    // THIS CATCHES ANY OTHER UNEXPECTED ERRORS
+    console.error("Critical error in submitContactForm:", exception);
+    const errorMessage = exception instanceof Error ? exception.message : 'Error inesperado del servidor al procesar el formulario.';
     return {
       status: 'error',
       message: errorMessage,
