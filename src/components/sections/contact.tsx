@@ -30,8 +30,8 @@ export default function Contact() {
   useEffect(() => {
     if (state.status === 'success') {
       toast({
-        title: 'Formulario Procesado',
-        description: state.message, // Muestra el ID de éxito o el mensaje de error.
+        title: 'Formulario Enviado',
+        description: state.message,
       });
       formRef.current?.reset();
     } else if (state.status === 'error' && state.message) {
