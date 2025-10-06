@@ -35,13 +35,19 @@ export async function submitContactForm(prevState: FormState, formData: FormData
 
   const { name, email, message } = validatedFields.data;
   
-  // Hardcoded values for maximum reliability during diagnostics
-  const resendApiKey = 're_D6zhiZ2X_KgLKBxktJRHYMS4FbptwjVHo';
+  const resendApiKey = process.env.RESEND_API_KEY;
   const fromEmail = 'servicio@recuperacionesjuridicas.lat';
   const toEmail = 'recuprolex@gmail.com';
-  
-  console.log(`Attempting to send email from ${fromEmail} to ${toEmail} via fetch.`);
 
+  if (!resendApiKey) {
+    console.error('La clave de API de Resend no está configurada en las variables de entorno.');
+    return {
+      status: 'error',
+      message: 'Error de configuración del servidor. No se pudo enviar el correo.',
+      errors: null,
+    };
+  }
+  
   try {
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -71,7 +77,6 @@ export async function submitContactForm(prevState: FormState, formData: FormData
       throw new Error(`Error de la API de Resend: ${data.message || 'Error desconocido'}`);
     }
 
-    console.log("Email sent successfully with ID:", data.id);
     return {
       status: 'success',
       message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.',
