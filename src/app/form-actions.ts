@@ -37,6 +37,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
   
   const resendApiKey = process.env.RESEND_API_KEY;
   const toEmail = 'recuprolex@gmail.com';
+  // Use a verified sender address from your domain
   const fromEmail = 'servicio@recuperacionesjuridicas.lat';
 
   if (!resendApiKey) {
@@ -77,11 +78,13 @@ export async function submitContactForm(prevState: FormState, formData: FormData
       throw new Error(`Error de la API de Resend: ${data.message || 'Error desconocido'}`);
     }
 
+    // This is the critical change: check for the data.error object from Resend's API
     if (data.error) {
        console.error("Resend API Error (in data object):", data.error);
        throw new Error(`Error de la API de Resend: ${data.error.message}`);
     }
 
+    // Success! Return the confirmation ID in the message.
     return {
       status: 'success',
       message: `¡Formulario enviado! Gracias por tu mensaje. ID de confirmación: ${data.id}`,
@@ -89,6 +92,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
     };
 
   } catch (exception) {
+    // Catch fetch errors or errors thrown from the response checks
     console.error("Critical error in submitContactForm:", exception);
     const errorMessage = exception instanceof Error ? exception.message : 'Error inesperado del servidor al procesar el formulario.';
     return {
