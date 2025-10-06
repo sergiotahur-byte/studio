@@ -36,6 +36,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
   const { name, email, message } = validatedFields.data;
   const resend = new Resend(process.env.RESEND_API_KEY);
   const receiverEmail = process.env.CONTACT_FORM_RECEIVER_EMAIL;
+  const fromEmail = `Contacto Web <servicio@recuperacionesjuridicas.lat>`;
 
   if (!process.env.RESEND_API_KEY) {
     console.error('Resend API Key is not configured.');
@@ -54,9 +55,9 @@ export async function submitContactForm(prevState: FormState, formData: FormData
   }
   
   try {
-    await resend.emails.send({
-      from: 'Contacto Web <onboarding@resend.dev>', // Resend requires this format
-      to: receiverEmail,
+    const { data, error } = await resend.emails.send({
+      from: fromEmail,
+      to: [receiverEmail],
       subject: `Nuevo Mensaje de Contacto de ${name}`,
       reply_to: email,
       html: `
@@ -67,6 +68,14 @@ export async function submitContactForm(prevState: FormState, formData: FormData
         <p>${message}</p>
       `
     });
+
+    if (error) {
+      console.error("Error sending email from Resend:", error);
+      return {
+        message: 'Error del servidor: No se pudo enviar el mensaje. Por favor, inténtelo más tarde.',
+        errors: null,
+      };
+    }
 
     return { message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.', errors: null };
   } catch (error) {
