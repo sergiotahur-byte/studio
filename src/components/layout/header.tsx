@@ -12,13 +12,13 @@ import {
 } from "@/components/ui/sheet";
 
 const navLinks = [
-  { name: 'Servicios', href: '#servicios' },
-  { name: 'Análisis IA', href: '#analisis-ia' },
-  { name: 'Consultas', href: '#consultas' },
-  { name: 'Blog', href: '#blog' },
-  { name: 'FAQ', href: '#faq' },
-  { name: 'Testimonios', href: '#testimonios' },
-  { name: 'Contacto', href: '#contacto' },
+  { name: 'Servicios', href: '/#servicios' },
+  { name: 'Análisis IA', href: '/#analisis-ia' },
+  { name: 'Consultas', href: '/#consultas' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'FAQ', href: '/#faq' },
+  { name: 'Testimonios', href: '/#testimonios' },
+  { name: 'Contacto', href: '/#contacto' },
 ];
 
 export default function Header() {
@@ -62,7 +62,7 @@ export default function Header() {
               </Button>
             ))}
              <Button asChild className="ml-4 bg-primary hover:bg-primary/90 text-primary-foreground">
-              <a href="#contacto">Consulta Gratuita</a>
+              <a href="/#contacto">Consulta Gratuita</a>
             </Button>
           </nav>
 
@@ -97,7 +97,7 @@ export default function Header() {
                     </Link>
                   ))}
                   <Button asChild className="mt-4 bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => setIsMobileMenuOpen(false)}>
-                    <a href="#contacto">Consulta Gratuita</a>
+                    <a href="/#contacto">Consulta Gratuita</a>
                   </Button>
                 </div>
               </SheetContent>

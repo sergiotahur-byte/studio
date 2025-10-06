@@ -27,7 +27,7 @@ export default function Blog() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {postsWithSummary.map((post) => (
+          {postsWithSummary.slice(0, 3).map((post) => (
             <Card key={post.title} className="bg-card flex flex-col rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300">
               <CardHeader>
                 <CardTitle className="text-xl font-bold font-headline">{post.title}</CardTitle>
@@ -47,7 +47,7 @@ export default function Blog() {
         </div>
         <div className="text-center mt-16">
           <Button size="lg" asChild>
-            <Link href="#blog">Ver más artículos</Link>
+            <Link href="/blog">Ver más artículos</Link>
           </Button>
         </div>
       </div>
