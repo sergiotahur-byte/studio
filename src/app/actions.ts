@@ -34,21 +34,24 @@ export async function submitContactForm(prevState: FormState, formData: FormData
   }
 
   const { name, email, message } = validatedFields.data;
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  
+  const resendApiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.EMAIL_FROM;
-  const toEmail = 'recuprolex@gmail.com';
+  const toEmail = process.env.EMAIL_TO;
 
-  if (!process.env.RESEND_API_KEY || !fromEmail) {
-    console.error('Resend API Key or From Email are not configured in .env');
+  if (!resendApiKey || !fromEmail || !toEmail) {
+    console.error('Una o más variables de entorno para el correo no están configuradas: RESEND_API_KEY, EMAIL_FROM, EMAIL_TO');
     return {
-        message: 'Error del servidor: El servicio de correo no está configurado.',
+        message: 'Error del servidor: El servicio de correo no está configurado correctamente.',
         errors: null
     };
   }
   
+  const resend = new Resend(resendApiKey);
+  
   try {
     const { data, error } = await resend.emails.send({
-      from: `Contacto Web <${fromEmail}>`,
+      from: `RecuperacionesJuridicas <${fromEmail}>`,
       to: [toEmail],
       subject: `Nuevo Mensaje de Contacto de ${name}`,
       reply_to: email,
