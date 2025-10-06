@@ -1,7 +1,7 @@
 'use client';
 
 import { useFormState, useFormStatus } from 'react-dom';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { submitContactForm } from '@/app/actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -22,20 +22,24 @@ function SubmitButton() {
 }
 
 export default function Contact() {
-  const initialState = { message: null, errors: null };
+  const initialState = { message: '', errors: null, status: 'idle' as const };
   const [state, dispatch] = useFormState(submitContactForm, initialState);
   const { toast } = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    if (state.message) {
-      if (state.errors && Object.keys(state.errors).length > 0) {
-        // Don't show toast for validation errors on load or failed submission
-      } else {
-        toast({
-          title: 'Formulario Enviado',
-          description: state.message,
-        });
-      }
+    if (state.status === 'success') {
+      toast({
+        title: 'Formulario Enviado',
+        description: state.message,
+      });
+      formRef.current?.reset();
+    } else if (state.status === 'error' && state.message) {
+       toast({
+        variant: 'destructive',
+        title: 'Error en el envío',
+        description: state.message,
+      });
     }
   }, [state, toast]);
 
@@ -55,7 +59,7 @@ export default function Contact() {
             <CardDescription>Diligencie los campos para iniciar su consulta.</CardDescription>
           </CardHeader>
           <CardContent>
-            <form action={dispatch} className="space-y-6">
+            <form ref={formRef} action={dispatch} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Nombre</Label>
                 <Input id="name" name="name" placeholder="Su nombre completo" required />
@@ -72,9 +76,6 @@ export default function Contact() {
                 {state.errors?.message && <p className="text-sm text-destructive">{state.errors.message[0]}</p>}
               </div>
               <SubmitButton />
-               {state.message && state.errors && (
-                <p className="text-sm text-destructive">{state.message}</p>
-              )}
             </form>
           </CardContent>
         </Card>

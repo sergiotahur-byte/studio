@@ -11,12 +11,13 @@ const contactFormSchema = z.object({
 });
 
 export type FormState = {
-  message: string | null;
+  message: string;
   errors: {
     name?: string[];
     email?: string[];
     message?: string[];
   } | null;
+  status: 'success' | 'error' | 'idle';
 };
 
 export async function submitContactForm(prevState: FormState, formData: FormData): Promise<FormState> {
@@ -30,6 +31,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
     return {
       errors: validatedFields.error.flatten().fieldErrors,
       message: 'Error de validación. Por favor, revise los campos.',
+      status: 'error',
     };
   }
 
@@ -43,7 +45,8 @@ export async function submitContactForm(prevState: FormState, formData: FormData
     console.error('Una o más variables de entorno para el correo no están configuradas: RESEND_API_KEY, EMAIL_FROM, EMAIL_TO');
     return {
         message: 'Error del servidor: El servicio de correo no está configurado correctamente.',
-        errors: null
+        errors: null,
+        status: 'error',
     };
   }
   
@@ -69,15 +72,21 @@ export async function submitContactForm(prevState: FormState, formData: FormData
       return {
         message: 'Error del servidor: No se pudo enviar el mensaje. Por favor, inténtelo más tarde.',
         errors: null,
+        status: 'error',
       };
     }
 
-    return { message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.', errors: null };
+    return { 
+      message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.', 
+      errors: null,
+      status: 'success',
+    };
   } catch (error) {
     console.error("Error sending email:", error);
     return {
       message: 'Error del servidor: No se pudo enviar el mensaje. Por favor, inténtelo más tarde.',
       errors: null,
+      status: 'error',
     };
   }
 }
