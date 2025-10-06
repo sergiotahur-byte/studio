@@ -36,7 +36,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
   const { name, email, message } = validatedFields.data;
   
   const resendApiKey = process.env.RESEND_API_KEY;
-  const fromEmail = 'servicio@recuperacionesjuridicas.lat';
+  const fromEmail = 'onboarding@resend.dev'; // Temporary fix to ensure email delivery
   const toEmail = 'recuprolex@gmail.com';
 
   if (!resendApiKey) {
@@ -70,12 +70,17 @@ export async function submitContactForm(prevState: FormState, formData: FormData
       }),
     });
 
-    const data = await response.json();
-
     if (!response.ok) {
-      console.error("Resend API Error Response:", data);
-      throw new Error(`Error de la API de Resend: ${data.message || 'Error desconocido'}`);
+        const data = await response.json();
+        console.error("Resend API Error Response:", data);
+        throw new Error(`Error de la API de Resend: ${data.message || 'Error desconocido'}`);
     }
+    
+    const data = await response.json();
+    if(data.error) {
+        throw new Error(`Error de la API de Resend: ${data.error.message}`);
+    }
+
 
     return {
       status: 'success',
