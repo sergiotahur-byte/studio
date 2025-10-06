@@ -36,8 +36,9 @@ export async function submitContactForm(prevState: FormState, formData: FormData
   const { name, email, message } = validatedFields.data;
   
   const resendApiKey = process.env.RESEND_API_KEY;
-  const fromEmail = 'onboarding@resend.dev'; // Temporary fix to ensure email delivery
   const toEmail = 'recuprolex@gmail.com';
+  // Revertimos al email del dominio verificado
+  const fromEmail = 'servicio@recuperacionesjuridicas.lat';
 
   if (!resendApiKey) {
     console.error('La clave de API de Resend no está configurada en las variables de entorno.');
@@ -56,6 +57,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
         'Authorization': `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
+        // Simplificamos el formato 'from' para máxima compatibilidad
         from: `Contacto Web <${fromEmail}>`,
         to: [toEmail],
         subject: `Nuevo Mensaje de Contacto de ${name}`,
