@@ -36,7 +36,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
   const { name, email, message } = validatedFields.data;
   const resend = new Resend(process.env.RESEND_API_KEY);
   const receiverEmail = process.env.CONTACT_FORM_RECEIVER_EMAIL;
-  const fromEmail = `Contacto Web <servicio@recuperacionesjuridicas.lat>`;
+  const fromEmail = 'servicio@recuperacionesjuridicas.lat';
 
   if (!process.env.RESEND_API_KEY) {
     console.error('Resend API Key is not configured.');
