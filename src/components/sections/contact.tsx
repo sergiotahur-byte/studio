@@ -28,7 +28,7 @@ export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    if (state.status === 'success') {
+    if (state.status === 'success' && state.message) {
       toast({
         title: 'Formulario Enviado',
         description: state.message,
