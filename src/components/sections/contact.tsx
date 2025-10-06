@@ -28,13 +28,15 @@ export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    if (state.status === 'success' && state.message) {
+    if (state.status === 'idle') return;
+
+    if (state.status === 'success') {
       toast({
-        title: 'Formulario Enviado',
+        title: 'Formulario Procesado',
         description: state.message,
       });
       formRef.current?.reset();
-    } else if (state.status === 'error' && state.message) {
+    } else if (state.status === 'error') {
        toast({
         variant: 'destructive',
         title: 'Error en el envío',
