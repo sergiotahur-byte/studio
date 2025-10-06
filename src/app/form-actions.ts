@@ -37,7 +37,6 @@ export async function submitContactForm(prevState: FormState, formData: FormData
   
   const resendApiKey = process.env.RESEND_API_KEY;
   const toEmail = 'recuprolex@gmail.com';
-  // Revertimos al email del dominio verificado
   const fromEmail = 'servicio@recuperacionesjuridicas.lat';
 
   if (!resendApiKey) {
@@ -57,8 +56,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
         'Authorization': `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        // Simplificamos el formato 'from' para máxima compatibilidad
-        from: `Contacto Web <${fromEmail}>`,
+        from: fromEmail,
         to: [toEmail],
         subject: `Nuevo Mensaje de Contacto de ${name}`,
         reply_to: email,
@@ -72,21 +70,23 @@ export async function submitContactForm(prevState: FormState, formData: FormData
       }),
     });
 
-    if (!response.ok) {
-        const data = await response.json();
-        console.error("Resend API Error Response:", data);
-        throw new Error(`Error de la API de Resend: ${data.message || 'Error desconocido'}`);
-    }
-    
     const data = await response.json();
-    if(data.error) {
-        throw new Error(`Error de la API de Resend: ${data.error.message}`);
+
+    if (!response.ok) {
+      // Si la respuesta no es OK, lanzamos un error con los detalles de Resend
+      console.error("Resend API Error Response:", data);
+      throw new Error(`Error de la API de Resend: ${data.message || 'Error desconocido'}`);
     }
 
+    if (data.error) {
+       console.error("Resend API Error (in data object):", data.error);
+       throw new Error(`Error de la API de Resend: ${data.error.message}`);
+    }
 
+    // Devolvemos el ID del correo en el mensaje de éxito para depuración.
     return {
       status: 'success',
-      message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.',
+      message: `Éxito. ID del correo: ${data.id}`,
       errors: null,
     };
 
