@@ -56,7 +56,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
         'Authorization': `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: fromEmail,
+        from: `Recuperaciones Jurídicas <${fromEmail}>`,
         to: [toEmail],
         subject: `Nuevo Mensaje de Contacto de ${name}`,
         reply_to: email,
