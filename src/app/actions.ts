@@ -2,6 +2,7 @@
 
 import { z } from 'zod';
 import { analyzeLeaseAgreement as analyzeLeaseAgreementFlow, AnalyzeLeaseAgreementOutput } from '@/ai/flows/analyze-lease-agreement';
+import { Resend } from 'resend';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres." }),
@@ -18,8 +19,6 @@ export type FormState = {
   } | null;
 };
 
-// NOTE: Nodemailer was removed as it's not compatible with this serverless environment's build process.
-// For contact forms, a dedicated email service API (like SendGrid, Resend, etc.) or a serverless function is recommended.
 export async function submitContactForm(prevState: FormState, formData: FormData): Promise<FormState> {
   const validatedFields = contactFormSchema.safeParse({
     name: formData.get('name'),
@@ -30,15 +29,53 @@ export async function submitContactForm(prevState: FormState, formData: FormData
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: 'Error de validación.',
+      message: 'Error de validación. Por favor, revise los campos.',
+    };
+  }
+
+  const { name, email, message } = validatedFields.data;
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const receiverEmail = process.env.CONTACT_FORM_RECEIVER_EMAIL;
+
+  if (!process.env.RESEND_API_KEY) {
+    console.error('Resend API Key is not configured.');
+    return {
+        message: 'Error del servidor: El servicio de correo no está configurado.',
+        errors: null
+    };
+  }
+
+  if (!receiverEmail) {
+    console.error('Contact form receiver email is not configured.');
+     return {
+        message: 'Error del servidor: El destinatario del correo no está configurado.',
+        errors: null
     };
   }
   
-  console.log("Form data received:", validatedFields.data);
+  try {
+    await resend.emails.send({
+      from: 'Contacto Web <onboarding@resend.dev>', // Resend requires this format
+      to: receiverEmail,
+      subject: `Nuevo Mensaje de Contacto de ${name}`,
+      reply_to: email,
+      html: `
+        <p>Has recibido un nuevo mensaje desde el formulario de contacto de tu web.</p>
+        <p><strong>Nombre:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Mensaje:</strong></p>
+        <p>${message}</p>
+      `
+    });
 
-  // Since the email sending logic is removed, we'll return a success message directly.
-  // In a real application, you would replace this with an API call to a transactional email service.
-  return { message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.', errors: null };
+    return { message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.', errors: null };
+  } catch (error) {
+    console.error("Error sending email:", error);
+    return {
+      message: 'Error del servidor: No se pudo enviar el mensaje. Por favor, inténtelo más tarde.',
+      errors: null,
+    };
+  }
 }
 
 export async function analyzeLease(leaseAgreementDataUri: string): Promise<{ success: boolean; data?: AnalyzeLeaseAgreementOutput; error?: string }> {
