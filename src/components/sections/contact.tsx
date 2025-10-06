@@ -3,7 +3,7 @@
 import { useFormState, useFormStatus } from 'react-dom';
 import { useEffect, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
-import { submitContactForm, type FormState } from '@/app/actions';
+import { submitContactForm, type FormState } from '@/app/form-actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
