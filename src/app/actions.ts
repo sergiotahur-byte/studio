@@ -39,24 +39,15 @@ export async function submitContactForm(prevState: FormState, formData: FormData
 
   const { name, email, message } = validatedFields.data;
 
-  // TEMPORARY DIAGNOSTIC STEP: Hardcoding values to rule out environment issues.
+  // DIAGNOSTIC STEP: Hardcoding values to completely rule out environment issues.
   const resendApiKey = 're_D6zhiZ2X_KgLKBxktJRHYMS4FbptwjVHo';
   const fromEmail = 'servicio@recuperacionesjuridicas.lat';
   const toEmail = 'recuprolex@gmail.com';
-
-  if (!resendApiKey || !fromEmail || !toEmail) {
-    // This check remains as a safeguard for future development.
-    return {
-        status: 'error',
-        message: 'Error de configuración del servidor: Faltan credenciales de envío.',
-        errors: null,
-    };
-  }
-
+  
   const resend = new Resend(resendApiKey);
 
   try {
-    const { error } = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: `Contacto Web <${fromEmail}>`,
       to: [toEmail],
       subject: `Nuevo Mensaje de Contacto de ${name}`,
@@ -70,11 +61,11 @@ export async function submitContactForm(prevState: FormState, formData: FormData
       `
     });
 
-    if (error) {
+    if (error || !data) {
       console.error("Resend API Error:", error);
       return {
         status: 'error',
-        message: `Error del servidor: No se pudo enviar el mensaje. ${error.message}`,
+        message: `Error del servidor: No se pudo enviar el mensaje. ${error?.message || 'Resend no devolvió datos.'}`,
         errors: null,
       };
     }
@@ -84,9 +75,9 @@ export async function submitContactForm(prevState: FormState, formData: FormData
       message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.',
       errors: null,
     };
-  } catch (error) {
-    console.error("General Error:", error);
-    const errorMessage = error instanceof Error ? error.message : 'Error inesperado del servidor.';
+  } catch (exception) {
+    console.error("General Error:", exception);
+    const errorMessage = exception instanceof Error ? exception.message : 'Error inesperado del servidor.';
     return {
       status: 'error',
       message: errorMessage,
