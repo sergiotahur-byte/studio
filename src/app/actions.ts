@@ -1,8 +1,10 @@
 "use server";
 
 import { z } from 'zod';
-import { analyzeLeaseAgreement as analyzeLeaseAgreementFlow, AnalyzeLeaseAgreementOutput } from '@/ai/flows/analyze-lease-agreement';
 import { Resend } from 'resend';
+import { analyzeLeaseAgreement as analyzeLeaseAgreementFlow, AnalyzeLeaseAgreementOutput } from '@/ai/flows/analyze-lease-agreement';
+
+// --- Rebuilt Contact Form Logic ---
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres." }),
@@ -12,12 +14,12 @@ const contactFormSchema = z.object({
 
 export type FormState = {
   message: string;
-  errors: {
+  status: 'success' | 'error' | 'idle';
+  errors?: {
     name?: string[];
     email?: string[];
     message?: string[];
   } | null;
-  status: 'success' | 'error' | 'idle';
 };
 
 export async function submitContactForm(prevState: FormState, formData: FormData): Promise<FormState> {
@@ -29,32 +31,32 @@ export async function submitContactForm(prevState: FormState, formData: FormData
 
   if (!validatedFields.success) {
     return {
-      errors: validatedFields.error.flatten().fieldErrors,
-      message: 'Error de validación. Por favor, revise los campos.',
       status: 'error',
+      message: 'Error de validación. Por favor, revise los campos.',
+      errors: validatedFields.error.flatten().fieldErrors,
     };
   }
 
   const { name, email, message } = validatedFields.data;
-  
-  const resendApiKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.EMAIL_FROM;
-  const toEmail = process.env.EMAIL_TO;
+
+  // TEMPORARY DIAGNOSTIC STEP: Hardcoding values to rule out environment issues.
+  const resendApiKey = 're_D6zhiZ2X_KgLKBxktJRHYMS4FbptwjVHo';
+  const fromEmail = 'servicio@recuperacionesjuridicas.lat';
+  const toEmail = 'recuprolex@gmail.com';
 
   if (!resendApiKey || !fromEmail || !toEmail) {
-    console.error('Una o más variables de entorno para el correo no están configuradas: RESEND_API_KEY, EMAIL_FROM, EMAIL_TO');
     return {
-        message: 'Error del servidor: El servicio de correo no está configurado correctamente.',
-        errors: null,
         status: 'error',
+        message: 'Error de configuración del servidor: Faltan credenciales de envío.',
+        errors: null,
     };
   }
-  
+
   const resend = new Resend(resendApiKey);
-  
+
   try {
-    const { data, error } = await resend.emails.send({
-      from: `RecuperacionesJuridicas <${fromEmail}>`,
+    const { error } = await resend.emails.send({
+      from: `Contacto Web <${fromEmail}>`,
       to: [toEmail],
       subject: `Nuevo Mensaje de Contacto de ${name}`,
       reply_to: email,
@@ -68,28 +70,31 @@ export async function submitContactForm(prevState: FormState, formData: FormData
     });
 
     if (error) {
-      console.error("Error sending email from Resend:", error);
+      console.error("Resend API Error:", error);
       return {
-        message: 'Error del servidor: No se pudo enviar el mensaje. Por favor, inténtelo más tarde.',
-        errors: null,
         status: 'error',
+        message: 'Error del servidor: No se pudo enviar el mensaje.',
+        errors: null,
       };
     }
 
-    return { 
-      message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.', 
-      errors: null,
+    return {
       status: 'success',
+      message: '¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.',
+      errors: null,
     };
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error("General Error:", error);
     return {
-      message: 'Error del servidor: No se pudo enviar el mensaje. Por favor, inténtelo más tarde.',
-      errors: null,
       status: 'error',
+      message: 'Error inesperado del servidor.',
+      errors: null,
     };
   }
 }
+
+
+// --- Existing Lease Analyzer Logic ---
 
 export async function analyzeLease(leaseAgreementDataUri: string): Promise<{ success: boolean; data?: AnalyzeLeaseAgreementOutput; error?: string }> {
   if (!leaseAgreementDataUri) {

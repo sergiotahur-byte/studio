@@ -3,7 +3,7 @@
 import { useFormState, useFormStatus } from 'react-dom';
 import { useEffect, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
-import { submitContactForm } from '@/app/actions';
+import { submitContactForm, type FormState } from '@/app/actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -22,7 +22,7 @@ function SubmitButton() {
 }
 
 export default function Contact() {
-  const initialState = { message: '', errors: null, status: 'idle' as const };
+  const initialState: FormState = { message: '', errors: null, status: 'idle' };
   const [state, dispatch] = useFormState(submitContactForm, initialState);
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
