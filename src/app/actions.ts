@@ -35,8 +35,8 @@ export async function submitContactForm(prevState: FormState, formData: FormData
 
   const { name, email, message } = validatedFields.data;
   const resend = new Resend(process.env.RESEND_API_KEY);
-  const receiverEmail = process.env.CONTACT_FORM_RECEIVER_EMAIL;
-  const fromEmail = 'servicio@recuperacionesjuridicas.lat';
+  const fromEmail = 'Contacto Web <servicio@recuperacionesjuridicas.lat>';
+  const toEmail = 'recuprolex@gmail.com';
 
   if (!process.env.RESEND_API_KEY) {
     console.error('Resend API Key is not configured.');
@@ -45,19 +45,11 @@ export async function submitContactForm(prevState: FormState, formData: FormData
         errors: null
     };
   }
-
-  if (!receiverEmail) {
-    console.error('Contact form receiver email is not configured.');
-     return {
-        message: 'Error del servidor: El destinatario del correo no está configurado.',
-        errors: null
-    };
-  }
   
   try {
     const { data, error } = await resend.emails.send({
       from: fromEmail,
-      to: [receiverEmail],
+      to: [toEmail],
       subject: `Nuevo Mensaje de Contacto de ${name}`,
       reply_to: email,
       html: `
