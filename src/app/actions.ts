@@ -45,6 +45,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
   const toEmail = 'recuprolex@gmail.com';
 
   if (!resendApiKey || !fromEmail || !toEmail) {
+    // This check remains as a safeguard for future development.
     return {
         status: 'error',
         message: 'Error de configuración del servidor: Faltan credenciales de envío.',
@@ -73,7 +74,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
       console.error("Resend API Error:", error);
       return {
         status: 'error',
-        message: 'Error del servidor: No se pudo enviar el mensaje.',
+        message: `Error del servidor: No se pudo enviar el mensaje. ${error.message}`,
         errors: null,
       };
     }
@@ -85,9 +86,10 @@ export async function submitContactForm(prevState: FormState, formData: FormData
     };
   } catch (error) {
     console.error("General Error:", error);
+    const errorMessage = error instanceof Error ? error.message : 'Error inesperado del servidor.';
     return {
       status: 'error',
-      message: 'Error inesperado del servidor.',
+      message: errorMessage,
       errors: null,
     };
   }
