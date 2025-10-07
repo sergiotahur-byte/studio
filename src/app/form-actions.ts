@@ -101,7 +101,6 @@ export async function submitContactForm(prevState: FormState, formData: FormData
         };
     }
 
-    // Mensaje de éxito que incluye el ID de confirmación
     return {
       status: 'success',
       message: `¡Formulario enviado! Gracias por tu mensaje.`,
