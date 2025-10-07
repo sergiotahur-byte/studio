@@ -6,6 +6,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes = [
     '',
+    '/blog',
+    '/gracias',
     '/politica-de-privacidad',
     '/terminos-de-servicio',
   ].map((route) => ({
@@ -14,11 +16,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1 : 0.8,
   }));
 
-  const blogRoutes = blogPosts.map((post) => ({
+  const blogPostRoutes = blogPosts.map((post) => ({
     url: `${siteUrl}/blog/${post.slug}`,
     lastModified: new Date().toISOString(),
     priority: 0.9,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  return [...staticRoutes, ...blogPostRoutes];
 }
