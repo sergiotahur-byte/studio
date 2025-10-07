@@ -1,47 +1,20 @@
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  trailingSlash: false,
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'placehold.co',
-        port: '',
-        pathname: '/**',
+    images: {
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'firebasestorage.googleapis.com',
+            port: '',
+            pathname: '/v0/b/studio-7962041961-212ab.firebasestorage.app/o/**',
+          },
+          {
+            protocol: 'https',
+            hostname: 'images.unsplash.com',
+            port: '',
+          },
+        ],
       },
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'picsum.photos',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'i.imgur.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'firebasestorage.googleapis.com',
-        port: '',
-        pathname: '/**',
-      }
-    ],
-  },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
