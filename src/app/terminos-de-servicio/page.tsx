@@ -17,39 +17,39 @@ export default function TermsOfServicePage() {
                 Volver a Inicio
               </Link>
             </Button>
-            <h1 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline mb-6">Términos de Servicio</h1>
-            <div className="prose prose-lg max-w-none text-foreground/90 space-y-4">
-              <p>Última actualización: [Fecha]</p>
+            <article className="prose prose-lg max-w-none text-foreground/90 space-y-4 prose-headings:text-foreground prose-strong:text-foreground">
+              <h1>Términos de Servicio</h1>
+              <p>Última actualización: 1 de Agosto de 2024</p>
 
-              <h2 className="text-2xl font-bold">1. Acuerdo de los términos</h2>
+              <h2>1. Acuerdo de los términos</h2>
               <p>
                 Al acceder y utilizar nuestro sitio web y servicios, usted acepta y está sujeto a los términos y condiciones de este acuerdo. Si no está de acuerdo con alguno de estos términos, tiene prohibido usar o acceder a este sitio.
               </p>
 
-              <h2 className="text-2xl font-bold">2. Uso del Servicio</h2>
+              <h2>2. Uso del Servicio</h2>
               <p>
                 Recuperaciones Jurídicas proporciona una plataforma para análisis de documentos legales y consultas. Los servicios, incluida la herramienta de análisis de IA, se proporcionan únicamente con fines informativos y no constituyen asesoramiento legal. La relación abogado-cliente solo se forma después de una consulta formal y la firma de un acuerdo de compromiso.
               </p>
               
-              <h2 className="text-2xl font-bold">3. Propiedad intelectual</h2>
+              <h2>3. Propiedad intelectual</h2>
               <p>
                 El sitio y su contenido, características y funcionalidades originales son propiedad de Recuperaciones Jurídicas y están protegidos por leyes internacionales de derechos de autor, marcas registradas, patentes, secretos comerciales y otras leyes de propiedad intelectual o derechos de propiedad.
               </p>
 
-              <h2 className="text-2xl font-bold">4. Limitación de responsabilidad</h2>
+              <h2>4. Limitación de responsabilidad</h2>
               <p>
                 En ningún caso Recuperaciones Jurídicas, ni sus directores, empleados, socios, agentes, proveedores o afiliados, serán responsables de daños indirectos, incidentales, especiales, consecuentes o punitivos, incluidos, entre otros, la pérdida de ganancias, datos, uso, buena voluntad u otras pérdidas intangibles, resultantes del uso de nuestro servicio.
               </p>
               
-              <h2 className="text-2xl font-bold">5. Ley aplicable</h2>
+              <h2>5. Ley aplicable</h2>
               <p>
                 Estos Términos se regirán e interpretarán de conformidad con las leyes de Colombia, sin tener en cuenta sus disposiciones sobre conflicto de leyes.
               </p>
 
-              <p>
-                <strong>[Esta es una plantilla. Consulte a un profesional legal para asegurarse de que sus términos de servicio se ajusten a sus necesidades comerciales y cumplan con la ley.]</strong>
+              <p className="border-l-4 border-accent pl-4 italic">
+                <strong>Nota:</strong> Esta es una plantilla genérica. Le recomendamos encarecidamente que consulte a un profesional legal para asegurarse de que sus términos de servicio se ajusten a las necesidades específicas de su negocio y cumplan con toda la legislación aplicable.
               </p>
-            </div>
+            </article>
           </div>
         </div>
       </main>

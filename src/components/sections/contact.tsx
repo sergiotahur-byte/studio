@@ -1,7 +1,8 @@
+
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
-import { useEffect, useRef } from 'react';
+import { useActionState, useEffect, useRef } from 'react';
+import { useFormStatus } from 'react-dom';
 import { useToast } from '@/hooks/use-toast';
 import { submitContactForm, type FormState } from '@/app/form-actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -23,7 +24,7 @@ function SubmitButton() {
 
 export default function Contact() {
   const initialState: FormState = { message: '', errors: null, status: 'idle' };
-  const [state, dispatch] = useFormState(submitContactForm, initialState);
+  const [state, dispatch, isPending] = useActionState(submitContactForm, initialState);
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 

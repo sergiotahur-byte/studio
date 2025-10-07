@@ -17,16 +17,16 @@ export default function PrivacyPolicyPage() {
                 Volver a Inicio
               </Link>
             </Button>
-            <h1 className="text-4xl lg:text-5xl font-extrabold text-foreground font-headline mb-6">Política de Privacidad</h1>
-            <div className="prose prose-lg max-w-none text-foreground/90 space-y-4">
-              <p>Última actualización: [Fecha]</p>
+            <article className="prose prose-lg max-w-none text-foreground/90 space-y-4 prose-headings:text-foreground prose-strong:text-foreground">
+              <h1>Política de Privacidad</h1>
+              <p>Última actualización: 1 de Agosto de 2024</p>
               
-              <h2 className="text-2xl font-bold">1. Introducción</h2>
+              <h2>1. Introducción</h2>
               <p>
                 Bienvenido a Recuperaciones Jurídicas. Respetamos su privacidad y nos comprometemos a proteger sus datos personales. Esta política de privacidad le informará sobre cómo cuidamos sus datos personales cuando visita nuestro sitio web y le informa sobre sus derechos de privacidad y cómo la ley lo protege.
               </p>
 
-              <h2 className="text-2xl font-bold">2. Datos que recopilamos sobre usted</h2>
+              <h2>2. Datos que recopilamos sobre usted</h2>
               <p>
                 Podemos recopilar, usar, almacenar y transferir diferentes tipos de datos personales sobre usted, que hemos agrupado de la siguiente manera:
               </p>
@@ -40,7 +40,7 @@ export default function PrivacyPolicyPage() {
                 También recopilamos, usamos y compartimos <strong>Datos Agregados</strong>, como datos estadísticos o demográficos, para cualquier propósito.
                </p>
 
-              <h2 className="text-2xl font-bold">3. Cómo utilizamos sus datos personales</h2>
+              <h2>3. Cómo utilizamos sus datos personales</h2>
               <p>
                 Utilizaremos sus datos personales solo cuando la ley nos lo permita. Generalmente, utilizaremos sus datos personales en las siguientes circunstancias:
               </p>
@@ -50,20 +50,20 @@ export default function PrivacyPolicyPage() {
                 <li>Donde necesitemos cumplir con una obligación legal o regulatoria.</li>
               </ul>
 
-              <h2 className="text-2xl font-bold">4. Divulgación de sus datos personales</h2>
+              <h2>4. Divulgación de sus datos personales</h2>
               <p>
                 Es posible que tengamos que compartir sus datos personales con partes externas, como proveedores de servicios que actúan como procesadores, asesores profesionales, incluidos abogados, banqueros, auditores y aseguradores, y reguladores y otras autoridades.
               </p>
 
-              <h2 className="text-2xl font-bold">5. Seguridad de los datos</h2>
+              <h2>5. Seguridad de los datos</h2>
               <p>
                 Hemos implementado medidas de seguridad adecuadas para evitar que sus datos personales se pierdan, usen o accedan de forma accidental de manera no autorizada, se alteren o se divulguen.
               </p>
-
-              <p>
-                <strong>[Esta es una plantilla. Consulte a un profesional legal para asegurarse de que su política de privacidad cumpla con todos los requisitos legales aplicables.]</strong>
+              
+              <p className="border-l-4 border-accent pl-4 italic">
+                <strong>Nota:</strong> Esta es una plantilla genérica. Le recomendamos encarecidamente que consulte a un profesional legal para asegurarse de que su política de privacidad cumpla con todos los requisitos legales aplicables en su jurisdicción.
               </p>
-            </div>
+            </article>
           </div>
         </div>
       </main>
