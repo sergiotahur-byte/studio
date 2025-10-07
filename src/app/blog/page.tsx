@@ -1,4 +1,3 @@
-
 import { blogPosts } from '@/lib/blog-posts';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';

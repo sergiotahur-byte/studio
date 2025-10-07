@@ -1,4 +1,3 @@
-
 import { blogPosts } from '@/lib/blog-posts';
 import { notFound } from 'next/navigation';
 import Header from '@/components/layout/header';

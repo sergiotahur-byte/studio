@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Gavel, Home, ShieldCheck } from 'lucide-react';
 
