@@ -36,8 +36,8 @@ export async function submitContactForm(prevState: FormState, formData: FormData
   const { name, email, message } = validatedFields.data;
   
   const resendApiKey = process.env.RESEND_API_KEY;
-  const toEmail = 'recuprolex@gmail.com';
-  const fromEmail = 'servicio@recuperacionesjuridicas.lat';
+  const toEmail = 'servicio@recuperacionesjuridicas.lat';
+  const fromEmail = 'onboarding@resend.dev';
 
   if (!resendApiKey) {
     console.error('La clave de API de Resend no está configurada en las variables de entorno.');
@@ -74,14 +74,14 @@ export async function submitContactForm(prevState: FormState, formData: FormData
 
     if (!response.ok) {
       console.error("Resend API Error Response:", data);
-      const errorMessage = data.message ? `Error de la API de Resend: ${data.message}` : 'Error desconocido de la API de Resend';
+      const errorMessage = data?.message ? `Error: ${data.message}` : 'Error desconocido de la API de Resend';
       return {
         status: 'error',
         message: errorMessage,
         errors: null,
       };
     }
-
+    
     if (data.error) {
        console.error("Resend API Error (in data object):", data.error);
        return {
@@ -102,7 +102,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
 
     return {
       status: 'success',
-      message: `¡Formulario enviado! Gracias por tu mensaje.`,
+      message: `¡Formulario enviado! ID de confirmación: ${data.id}`,
       errors: null,
     };
 
