@@ -37,6 +37,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
   
   const resendApiKey = process.env.RESEND_API_KEY;
   const toEmail = 'recuprolex@gmail.com';
+  // Usar el dominio verificado en Resend
   const fromEmail = 'servicio@recuperacionesjuridicas.lat';
 
   if (!resendApiKey) {
@@ -87,6 +88,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
         throw new Error('La API de Resend tuvo éxito pero no devolvió un ID.');
     }
 
+    // Mensaje de éxito que incluye el ID de confirmación
     return {
       status: 'success',
       message: `¡Formulario enviado! Gracias por tu mensaje. ID de confirmación: ${data.id}`,
