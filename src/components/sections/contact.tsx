@@ -28,13 +28,11 @@ export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    // No hacer nada si el estado es 'idle'
     if (state.status === 'idle') return;
 
     if (state.status === 'success') {
       toast({
-        title: 'Formulario Procesado',
-        // El 'description' ahora mostrará el mensaje exacto del servidor, incluyendo el ID
+        title: 'Formulario Enviado',
         description: state.message,
       });
       formRef.current?.reset();
