@@ -202,8 +202,7 @@ const CustomContractPackage = () => {
       </CardContent>
       <CardFooter className="p-8 pt-0">
         <Button asChild size="lg" className="w-full bg-primary hover:bg-primary/90">
-          <a href={selectedOption.paymentLink} target
-"_blank" rel="noopener noreferrer">Pagar Ahora</a>
+          <a href={selectedOption.paymentLink} target="_blank" rel="noopener noreferrer">Pagar Ahora</a>
         </Button>
       </CardFooter>
     </Card>
