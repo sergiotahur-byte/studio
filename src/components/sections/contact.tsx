@@ -33,14 +33,14 @@ export default function Contact() {
     if (state.status === 'success') {
       toast({
         title: 'Formulario Procesado',
-        description: state.message, // This will now show the message with the ID from the server
+        description: state.message,
       });
       formRef.current?.reset();
     } else if (state.status === 'error') {
        toast({
         variant: 'destructive',
         title: 'Error en el envío',
-        description: state.message, // This will show the detailed error from the server
+        description: state.message,
       });
     }
   }, [state, toast]);
