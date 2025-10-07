@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /* config options here */
+  trailingSlash: false,
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -40,15 +41,6 @@ const nextConfig = {
         pathname: '/**',
       }
     ],
-  },
-  async redirects() {
-    return [
-      {
-        source: '/:path+/',
-        destination: '/:path+',
-        permanent: true,
-      },
-    ]
   },
 };
 
