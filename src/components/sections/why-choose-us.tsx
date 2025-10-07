@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Users, Zap, Scale } from "lucide-react";
 
@@ -31,7 +32,7 @@ export default function WhyChooseUs() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="bg-card text-center flex flex-col items-center p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300">
+            <Card key={index} className="bg-card text-center flex flex-col items-center p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300 border-white/10">
               <CardHeader className="p-0 mb-4">
                 {feature.icon}
                 <CardTitle className="mt-4 text-2xl font-bold font-headline">{feature.title}</CardTitle>

@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useRef, useEffect } from 'react';
@@ -36,7 +37,7 @@ const ParticleBackground = () => {
         this.size = Math.random() * 1.5 + 1; // Slightly smaller max size
         this.speedX = Math.random() * 0.3 - 0.15; // Slower speed
         this.speedY = Math.random() * 0.3 - 0.15;
-        this.color = `hsla(221, 44%, 19%, ${Math.random() * 0.2 + 0.05})`; // Lower opacity
+        this.color = `hsla(180, 100%, 25%, ${Math.random() * 0.2 + 0.05})`;
       }
       update() {
         if (!canvas) return;

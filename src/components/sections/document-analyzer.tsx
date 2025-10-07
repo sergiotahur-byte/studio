@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -88,7 +89,7 @@ export default function DocumentAnalyzer() {
           </p>
         </div>
 
-        <Card className="max-w-4xl mx-auto bg-card p-6 md:p-10 shadow-lg">
+        <Card className="max-w-4xl mx-auto bg-card p-6 md:p-10 shadow-lg border-white/10">
           <CardHeader className="p-0 text-center">
             <CardTitle className="text-2xl font-bold font-headline">Herramienta de Análisis de Contratos</CardTitle>
             <CardDescription className="mt-2 text-muted-foreground">Suba su documento para recibir un análisis instantáneo.</CardDescription>
@@ -134,7 +135,7 @@ export default function DocumentAnalyzer() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4 font-headline text-center">Resultados del Análisis</h3>
                 </div>
-                <Card className="bg-secondary">
+                <Card className="bg-secondary border-white/10">
                   <CardHeader>
                     <CardTitle>Resumen del Contrato</CardTitle>
                   </CardHeader>
@@ -144,7 +145,7 @@ export default function DocumentAnalyzer() {
                 </Card>
 
                 {analysisResult.unfairClauses && analysisResult.unfairClauses.length > 0 && (
-                   <Card className="bg-secondary">
+                   <Card className="bg-secondary border-white/10">
                     <CardHeader>
                       <CardTitle>Cláusulas Potencialmente Injustas Encontradas</CardTitle>
                     </CardHeader>

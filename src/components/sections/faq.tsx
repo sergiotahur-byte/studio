@@ -1,3 +1,4 @@
+
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const faqs = [
@@ -32,7 +33,7 @@ export default function Faq() {
         <div className="max-w-4xl mx-auto">
           <Accordion type="single" collapsible className="w-full space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="bg-card rounded-xl px-6 shadow-lg">
+              <AccordionItem key={index} value={`item-${index}`} className="bg-card rounded-xl px-6 shadow-lg border-white/10">
                 <AccordionTrigger className="text-left text-lg font-semibold hover:no-underline text-foreground">
                   {faq.question}
                 </AccordionTrigger>

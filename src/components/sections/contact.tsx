@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useFormState, useFormStatus } from 'react-dom';
@@ -55,7 +56,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <Card className="max-w-2xl mx-auto bg-card rounded-xl shadow-lg">
+        <Card className="max-w-2xl mx-auto bg-card rounded-xl shadow-lg border-white/10">
           <CardHeader>
             <CardTitle className="text-2xl font-bold font-headline">Formulario de Contacto</CardTitle>
             <CardDescription>Diligencie los campos para iniciar su consulta.</CardDescription>

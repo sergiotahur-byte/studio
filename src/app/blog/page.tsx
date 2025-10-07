@@ -1,3 +1,4 @@
+
 import { blogPosts } from '@/lib/blog-posts';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
@@ -31,7 +32,7 @@ export default function BlogIndexPage() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {postsWithSummary.map((post) => (
-                        <Card key={post.title} className="bg-card flex flex-col rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300">
+                        <Card key={post.title} className="bg-card flex flex-col rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300 border-white/10">
                         <CardHeader>
                             <CardTitle className="text-xl font-bold font-headline">{post.title}</CardTitle>
                         </CardHeader>
@@ -39,7 +40,7 @@ export default function BlogIndexPage() {
                             <CardDescription className="text-foreground/90">{post.summary}</CardDescription>
                         </CardContent>
                         <CardFooter>
-                            <Button variant="link" asChild className="p-0 text-primary">
+                            <Button variant="link" asChild className="p-0 text-accent">
                                 <Link href={`/blog/${post.slug}`}>
                                 Leer más <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>

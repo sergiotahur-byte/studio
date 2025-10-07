@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -68,7 +69,7 @@ const ContractReviewPackage = () => {
 
   return (
      <Card
-      className="flex flex-col bg-card rounded-xl shadow-lg transition-transform duration-300 hover:-translate-y-2"
+      className="flex flex-col bg-card rounded-xl shadow-lg transition-transform duration-300 hover:-translate-y-2 border-white/10"
     >
       <CardHeader className="p-8">
         <CardTitle className="text-2xl font-bold font-headline">Revisión de Contrato</CardTitle>
@@ -151,7 +152,7 @@ const CustomContractPackage = () => {
 
   return (
     <Card
-      className="flex flex-col bg-card rounded-xl shadow-lg transition-transform duration-300 hover:-translate-y-2"
+      className="flex flex-col bg-card rounded-xl shadow-lg transition-transform duration-300 hover:-translate-y-2 border-white/10"
     >
       <CardHeader className="p-8">
         <CardTitle className="text-2xl font-bold font-headline">Elaboración de Contrato Personalizado</CardTitle>
@@ -224,7 +225,7 @@ export default function ConsultationPackages() {
           {packages.map((pkg) => (
             <Card
               key={pkg.name}
-              className={`flex flex-col bg-card rounded-xl shadow-lg transition-transform duration-300 ${
+              className={`flex flex-col bg-card rounded-xl shadow-lg transition-transform duration-300 border-white/10 ${
                 pkg.isPopular ? 'border-accent shadow-accent/20 lg:scale-105' : 'hover:-translate-y-2'
               }`}
             >
