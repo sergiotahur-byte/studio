@@ -1,22 +1,13 @@
 "use server";
 
 import { z } from 'zod';
+import { type FormState } from './types';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres." }),
   email: z.string().email({ message: "Por favor, ingrese un correo electrónico válido." }),
   message: z.string().min(10, { message: "El mensaje debe tener al menos 10 caracteres." }),
 });
-
-export type FormState = {
-  message: string;
-  status: 'success' | 'error' | 'idle';
-  errors?: {
-    name?: string[];
-    email?: string[];
-    message?: string[];
-  } | null;
-};
 
 export async function submitContactForm(prevState: FormState, formData: FormData): Promise<FormState> {
   const validatedFields = contactFormSchema.safeParse({
@@ -72,30 +63,21 @@ export async function submitContactForm(prevState: FormState, formData: FormData
 
     const data = await response.json();
 
-    if (!response.ok) {
-      console.error("Resend API Error Response:", data);
-      const errorMessage = data?.message ? `Error: ${data.message}` : 'Error desconocido de la API de Resend';
-      return {
-        status: 'error',
-        message: errorMessage,
-        errors: null,
-      };
-    }
-    
     if (data.error) {
-       console.error("Resend API Error (in data object):", data.error);
+       console.error("Resend API Error:", data.error);
        return {
         status: 'error',
-        message: `Error de la API de Resend: ${data.error.message}`,
+        message: `Error de la API: ${data.error.message}`,
         errors: null,
       };
     }
     
-    if (!data.id) {
-        console.error("Resend API Success Response missing ID:", data);
+    if (!response.ok || !data.id) {
+        console.error("Resend API Error Response:", data);
+        const errorMessage = 'Error desconocido al enviar el correo. Intente más tarde.';
         return {
           status: 'error',
-          message: 'La API de Resend tuvo éxito pero no devolvió un ID. Contacte a soporte.',
+          message: errorMessage,
           errors: null,
         };
     }
@@ -108,7 +90,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
 
   } catch (exception) {
     console.error("Critical error in submitContactForm:", exception);
-    const errorMessage = exception instanceof Error ? exception.message : 'Error inesperado del servidor al procesar el formulario.';
+    const errorMessage = exception instanceof Error ? exception.message : 'Error inesperado del servidor.';
     return {
       status: 'error',
       message: errorMessage,
