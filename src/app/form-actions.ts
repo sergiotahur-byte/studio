@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from 'zod';
-import { type FormState } from './types';
+import type { FormState } from './types';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres." }),
