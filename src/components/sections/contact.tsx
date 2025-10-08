@@ -65,18 +65,18 @@ export default function Contact() {
             <form ref={formRef} action={dispatch} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Nombre</Label>
-                <Input id="name" name="name" placeholder="Su nombre completo" required />
-                {state.errors?.name && <p className="text-sm text-destructive">{state.errors.name[0]}</p>}
+                <Input id="name" name="name" placeholder="Su nombre completo" required aria-describedby={state.errors?.name ? 'name-error' : undefined} />
+                {state.errors?.name && <p id="name-error" className="text-sm text-destructive">{state.errors.name[0]}</p>}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Correo Electrónico</Label>
-                <Input id="email" name="email" type="email" placeholder="su@email.com" required />
-                {state.errors?.email && <p className="text-sm text-destructive">{state.errors.email[0]}</p>}
+                <Input id="email" name="email" type="email" placeholder="su@email.com" required aria-describedby={state.errors?.email ? 'email-error' : undefined} />
+                {state.errors?.email && <p id="email-error" className="text-sm text-destructive">{state.errors.email[0]}</p>}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="message">Mensaje</Label>
-                <Textarea id="message" name="message" placeholder="Describa su situación o pregunta aquí..." required rows={5} />
-                {state.errors?.message && <p className="text-sm text-destructive">{state.errors.message[0]}</p>}
+                <Textarea id="message" name="message" placeholder="Describa su situación o pregunta aquí..." required rows={5} aria-describedby={state.errors?.message ? 'message-error' : undefined} />
+                {state.errors?.message && <p id="message-error" className="text-sm text-destructive">{state.errors.message[0]}</p>}
               </div>
               <SubmitButton />
             </form>

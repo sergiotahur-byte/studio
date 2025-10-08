@@ -63,25 +63,25 @@ export async function submitContactForm(prevState: FormState, formData: FormData
 
     const data = await response.json();
 
-    if (data.error) {
-       console.error("Resend API Error:", data.error);
+    if (!response.ok || data.error) {
+       const errorMessage = data.error ? data.error.message : 'Error desconocido al enviar el correo.';
+       console.error("Resend API Error:", data.error || data);
        return {
         status: 'error',
-        message: `Error de la API: ${data.error.message}`,
+        message: `Error de la API: ${errorMessage}`,
         errors: null,
       };
     }
-    
-    if (!response.ok || !data.id) {
-        console.error("Resend API Error Response:", data);
-        const errorMessage = 'Error desconocido al enviar el correo. Intente más tarde.';
+
+    if (!data.id) {
+        console.error("Resend API Error: No ID in response", data);
         return {
           status: 'error',
-          message: errorMessage,
+          message: 'Error inesperado: La respuesta de la API no contiene un ID.',
           errors: null,
         };
     }
-
+    
     return {
       status: 'success',
       message: `¡Formulario enviado! ID de confirmación: ${data.id}`,
@@ -93,7 +93,7 @@ export async function submitContactForm(prevState: FormState, formData: FormData
     const errorMessage = exception instanceof Error ? exception.message : 'Error inesperado del servidor.';
     return {
       status: 'error',
-      message: errorMessage,
+      message: `Error crítico: ${errorMessage}`,
       errors: null,
     };
   }
