@@ -3,13 +3,19 @@
 import { z } from 'zod';
 import type { FormState } from './types';
 
+// Esquema de validación para los datos del formulario de contacto
 const contactFormSchema = z.object({
-  name: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres." }),
-  email: z.string().email({ message: "Por favor, ingrese un correo electrónico válido." }),
-  message: z.string().min(10, { message: "El mensaje debe tener al menos 10 caracteres." }),
+  name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
+  email: z.string().email("Por favor, ingrese un correo electrónico válido."),
+  message: z.string().min(10, "El mensaje debe tener al menos 10 caracteres."),
 });
 
+/**
+ * Procesa el envío del formulario de contacto.
+ * Valida los datos, envía un correo electrónico a través de Resend y devuelve el estado del formulario.
+ */
 export async function submitContactForm(prevState: FormState, formData: FormData): Promise<FormState> {
+  // 1. Validar los datos del formulario
   const validatedFields = contactFormSchema.safeParse({
     name: formData.get('name'),
     email: formData.get('email'),
@@ -19,26 +25,28 @@ export async function submitContactForm(prevState: FormState, formData: FormData
   if (!validatedFields.success) {
     return {
       status: 'error',
-      message: 'Error de validación. Por favor, revise los campos.',
+      message: 'Error de validación. Por favor, revise los campos del formulario.',
       errors: validatedFields.error.flatten().fieldErrors,
     };
   }
 
   const { name, email, message } = validatedFields.data;
-  
+
+  // 2. Verificar la configuración de la API de Resend
   const resendApiKey = process.env.RESEND_API_KEY;
-  const toEmail = 'servicio@recuperacionesjuridicas.lat';
+  const toEmail = process.env.CONTACT_EMAIL_TO || 'servicio@recuperacionesjuridicas.lat';
   const fromEmail = 'onboarding@resend.dev';
 
   if (!resendApiKey) {
-    console.error('La clave de API de Resend no está configurada en las variables de entorno.');
+    console.error('Error de configuración: La clave de API de Resend no está definida en las variables de entorno.');
     return {
       status: 'error',
-      message: 'Error de configuración del servidor. No se pudo enviar el correo.',
+      message: 'Error interno del servidor. No se pudo procesar su solicitud.',
       errors: null,
     };
   }
-  
+
+  // 3. Enviar el correo electrónico usando la API de Resend
   try {
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -47,12 +55,11 @@ export async function submitContactForm(prevState: FormState, formData: FormData
         'Authorization': `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: `Recuperaciones Jurídicas <${fromEmail}>`,
+        from: `Formulario Web <${fromEmail}>`,
         to: [toEmail],
-        subject: `Nuevo Mensaje de Contacto de ${name}`,
+        subject: `Nuevo mensaje de contacto de: ${name}`,
         reply_to: email,
         html: `
-          <p>Has recibido un nuevo mensaje desde el formulario de contacto de tu web.</p>
           <p><strong>Nombre:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Mensaje:</strong></p>
@@ -63,37 +70,31 @@ export async function submitContactForm(prevState: FormState, formData: FormData
 
     const data = await response.json();
 
-    if (!response.ok || data.error) {
-       const errorMessage = data.error ? data.error.message : 'Error desconocido al enviar el correo.';
-       console.error("Resend API Error:", data.error || data);
-       return {
+    if (!response.ok) {
+      // Capturar errores específicos de la API de Resend
+      const errorMessage = data?.message || 'Error desconocido al comunicarse con la API de correo.';
+      console.error(`Resend API Error (${response.status}):`, data);
+      return {
         status: 'error',
-        message: `Error de la API: ${errorMessage}`,
+        message: `No se pudo enviar el mensaje. Error: ${errorMessage}`,
         errors: null,
       };
     }
-
-    if (!data.id) {
-        console.error("Resend API Error: No ID in response", data);
-        return {
-          status: 'error',
-          message: 'Error inesperado: La respuesta de la API no contiene un ID.',
-          errors: null,
-        };
-    }
     
+    console.log(`Correo enviado exitosamente. ID de Resend: ${data.id}`);
     return {
       status: 'success',
-      message: `¡Formulario enviado! ID de confirmación: ${data.id}`,
+      message: '¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.',
       errors: null,
     };
 
   } catch (exception) {
-    console.error("Critical error in submitContactForm:", exception);
-    const errorMessage = exception instanceof Error ? exception.message : 'Error inesperado del servidor.';
+    // Capturar errores críticos de red u otros imprevistos
+    console.error("Excepción crítica en submitContactForm:", exception);
+    const errorMessage = exception instanceof Error ? exception.message : 'Error desconocido del servidor.';
     return {
       status: 'error',
-      message: `Error crítico: ${errorMessage}`,
+      message: `Error crítico al procesar la solicitud: ${errorMessage}`,
       errors: null,
     };
   }
