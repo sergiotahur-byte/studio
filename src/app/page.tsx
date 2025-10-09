@@ -1,3 +1,5 @@
+// DIAGNOSTIC COMMENT: This comment is added by the AI assistant to verify if file changes are being applied. If you can see this, the system is working.
+
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import Hero from '@/components/sections/hero';
